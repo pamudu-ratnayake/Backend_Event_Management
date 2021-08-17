@@ -22,6 +22,7 @@ mongoose.connect(URL, {
 const connection = mongoose.connection;
 connection.once("open", () => {
 	console.log("        <=== Database connected ! ====>");
+	console.log(`<=== Running on URL: http://localhost:${PORT} ====>`);
 });
 
 app.listen(PORT, () => {
@@ -30,3 +31,7 @@ app.listen(PORT, () => {
 
 const eventAddRouter = require("./routes/EventAddRT.js");
 app.use("/eventAdd", eventAddRouter);
+
+// Service Provider Routes
+const serviceProviderRouter = require("./routes/ServiceProviderRoutesrs/ServiceProviderRT.js");
+app.use("/serviceProvider", serviceProviderRouter);
