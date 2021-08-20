@@ -24,7 +24,7 @@ connection.once("open", () => {
   console.log("Database connected!");
 });
 
-const AdvertisementRouter = require("./routes/Advertisements.js")
+const AdvertisementRouter = require("./routes/Advertisements.js");
 
 app.use("/advertisement",AdvertisementRouter);
 

@@ -1,45 +1,15 @@
 const router = require("express").Router();
-let Advertisement = require("../models/Advertisement");
+// const Advertisement = require("../models/Advertisement");
+const Controller = require("../controllers/Controller");
 
-router.route("/addadvertisement").post((req, res) => {
-  const SPName = req.body.SPName;
-  const SPID = req.body.SPID;
-  const AID = req.body.AID;
-  const CEmail = req.body.CEmail;
-  const ContactNummber = Number(req.body.ContactNummber);
-  const SType = req.body.SType;
-  const AddDuration = req.body.AddDuration;
-  const PType = req.body.PType;
+router.post("/addadvertisement", Controller.addAdvertisement);
 
-  const newAdvertisement = new Advertisement({
-    SPName,
-    SPID,
-    AID,
-    CEmail,
-    ContactNummber,
-    SType,
-    AddDuration,
-    PType,
-  });
+router.get("/get/:id", Controller.viewoneAdvertisement);
 
-  newAdvertisement
-    .save()
-    .then(() => {
-      res.json("Advertisement Added");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
+router.get("/", Controller.viewAdvertisement);
 
-router.route("/").get((req, res) => {
-  Advertisement.find()
-    .then(() => {
-      res.json(advertisement);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
+router.put("/updateadvertisement/:id", Controller.updateAdvertisement);
+
+router.delete("/deleteadvertisement/:id", Controller.deleteAdvertisement);
 
 module.exports = router;
