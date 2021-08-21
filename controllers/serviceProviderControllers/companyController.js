@@ -21,7 +21,7 @@ exports.createCompany = async (req, res, next) => {
 		.save()
 		.then((company) => {
 			console.log(company);
-			res.json(" Service Provider Created ");
+			res.json(company);
 		})
 		.catch((err) => {
 			console.log(err);
@@ -31,8 +31,11 @@ exports.createCompany = async (req, res, next) => {
 exports.getAllCompanies = (req, res, next) => {
 	console.log(`<=== Get All Companies ====>`);
 	Company.find()
-		.then((companies) => {
-			res.json(companies);
+		.sort({ _id: -1 })
+		.limit(1)
+		.then((company) => {
+			console.log(company);
+			res.json(company);
 		})
 		.catch((err) => {
 			console.log(err);

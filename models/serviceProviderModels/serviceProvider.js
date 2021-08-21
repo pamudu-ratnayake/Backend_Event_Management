@@ -29,7 +29,7 @@ const serviceProviderSchema = new mongoose.Schema({
 		// required: true,
 	},
 	telephone: {
-		type: Number,
+		type: String,
 	},
 	address: {
 		type: String,

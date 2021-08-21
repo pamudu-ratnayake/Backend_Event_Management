@@ -118,3 +118,17 @@ exports.getServiceProvider = async (req, res) => {
 			console.log(err);
 		});
 };
+
+exports.getAllServicerProviderOne = (req, res, next) => {
+	console.log(`<=== Get All Servicer Providers ====>`);
+	ServiceProviderModel.find()
+		.sort({ _id: -1 })
+		.limit(1)
+		.then((serviceProvider) => {
+			console.log(serviceProvider);
+			res.json(serviceProvider);
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+};
