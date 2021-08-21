@@ -1,8 +1,10 @@
 let ServiceProviderModel = require("../../models/serviceProviderModels/serviceProvider");
 
 exports.createServiceProvider = (req, res, next) => {
+	console.log(`<=== Create Service Provider ====>`);
 	// Assigning value to variabales
 	const servic_provider_Id = req.body.servic_provider_Id;
+	const nic_no = req.body.nic_no;
 	const first_name = req.body.first_name;
 	const last_name = req.body.last_name;
 	const user_name = req.body.user_name;
@@ -14,6 +16,7 @@ exports.createServiceProvider = (req, res, next) => {
 
 	const newServiceProvider = new ServiceProviderModel({
 		servic_provider_Id,
+		nic_no,
 		first_name,
 		last_name,
 		user_name,
@@ -35,6 +38,7 @@ exports.createServiceProvider = (req, res, next) => {
 };
 
 exports.getAllServicerProviders = (req, res, next) => {
+	console.log(`<=== Get All Servicer Providers ====>`);
 	ServiceProviderModel.find()
 		.then((servicerProviders) => {
 			res.json(servicerProviders);

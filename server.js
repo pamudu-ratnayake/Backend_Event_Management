@@ -35,3 +35,5 @@ app.use("/eventAdd", eventAddRouter);
 // Service Provider Routes
 const serviceProviderRouter = require("./routes/ServiceProviderRoutesrs/ServiceProviderRT.js");
 app.use("/serviceProvider", serviceProviderRouter);
+const companyRouter = require("./routes/ServiceProviderRoutesrs/CompanyRT.js");
+app.use("/company", companyRouter);

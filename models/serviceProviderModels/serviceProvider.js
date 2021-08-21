@@ -5,6 +5,10 @@ const serviceProviderSchema = new mongoose.Schema({
 		type: String,
 		// required: true,
 	},
+	nic_no: {
+		type: String,
+		// required: true,
+	},
 	first_name: {
 		type: String,
 		// required: true,

@@ -1,7 +1,7 @@
 const router = require("express").Router();
-let ServiceProviderController = require("../../controllers/serviceProviderControllers/serviceProviderControler");
+let CompanyController = require("../../controllers/serviceProviderControllers/companyController");
 
-router.post("/create", ServiceProviderController.createServiceProvider);
-router.get("/", ServiceProviderController.getAllServicerProviders);
+router.post("/create", CompanyController.createCompany);
+router.get("/", CompanyController.getAllCompanies);
 
 module.exports = router;
