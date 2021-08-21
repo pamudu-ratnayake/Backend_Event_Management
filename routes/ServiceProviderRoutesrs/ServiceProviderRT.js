@@ -3,5 +3,8 @@ let ServiceProviderController = require("../../controllers/serviceProviderContro
 
 router.post("/create", ServiceProviderController.createServiceProvider);
 router.get("/", ServiceProviderController.getAllServicerProviders);
+router.put("/update/:id", ServiceProviderController.updateServiceProvider);
+router.delete("/delete/:id", ServiceProviderController.deleteServiceProvider);
+router.get("/get/:id", ServiceProviderController.getServiceProvider);
 
 module.exports = router;

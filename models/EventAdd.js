@@ -12,7 +12,7 @@ const eventAddSchema = new Schema({
     required: true,
   },
   date_of_the_event: {
-    type: Date,
+    type: String,
     required: true,
   },
   location: {
@@ -35,7 +35,7 @@ const eventAddSchema = new Schema({
     type: String,
     required: true,
   },
-  cus_id: {
+  org_nic: {
     type: String,
     required: true,
   },
@@ -44,6 +44,10 @@ const eventAddSchema = new Schema({
     required: true,
   },
   cus_con_number: {
+    type: String,
+    required: true,
+  },
+  description: {
     type: String,
     required: true,
   },

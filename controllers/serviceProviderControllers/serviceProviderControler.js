@@ -47,3 +47,74 @@ exports.getAllServicerProviders = (req, res, next) => {
 			console.log(err);
 		});
 };
+
+exports.updateServiceProvider = async (req, res) => {
+	console.log(`<=== Update Servicer Provider ====>`);
+	let id = req.params.id;
+	const {
+		servic_provider_Id,
+		nic_no,
+		first_name,
+		last_name,
+		user_name,
+		email,
+		mobile,
+		telephone,
+		address,
+		password,
+	} = req.body;
+
+	const serviceProviderUpdate = {
+		id,
+		servic_provider_Id,
+		nic_no,
+		first_name,
+		last_name,
+		user_name,
+		email,
+		mobile,
+		telephone,
+		address,
+		password,
+	};
+
+	const update = await ServiceProviderModel.findByIdAndUpdate(
+		id,
+		serviceProviderUpdate
+	)
+		.then(() => {
+			res.status(200).send({ status: "Service Provider Updated!" });
+		})
+		.catch((err) => {
+			res.status(500).send({ status: "Error! Cannot Update!" });
+			console.log(err.message);
+		});
+};
+
+exports.deleteServiceProvider = async (req, res) => {
+	console.log(`<=== Delete Servicer Provider ====>`);
+	let id = req.params.id;
+
+	await ServiceProviderModel.findByIdAndDelete(id)
+		.then(() => {
+			res.status(200).send({ status: "Service Provider Deleted!" });
+		})
+		.catch((err) => {
+			res.status(500).send({ status: "Error! Cannot Delete!" });
+			console.log(err.message);
+		});
+};
+
+exports.getServiceProvider = async (req, res) => {
+	console.log(`<=== Get Servicer Provider ====>`);
+
+	let id = req.params.id;
+
+	await ServiceProviderModel.findById(id)
+		.then((serviceProvider) => {
+			res.json(serviceProvider);
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+};
