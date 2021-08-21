@@ -6,7 +6,7 @@ router.post("/addadvertisement", Controller.addAdvertisement);
 
 router.get("/get/:id", Controller.viewoneAdvertisement);
 
-router.get("/", Controller.viewAdvertisement);
+router.get("/list", Controller.viewAdvertisement);
 
 router.put("/updateadvertisement/:id", Controller.updateAdvertisement);
 
