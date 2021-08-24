@@ -1,5 +1,6 @@
 let Customers = require("../models/CustomerDetails");
 
+//---post---
 exports.postCustomerDetails = (req, res, next) => {
   const cus_userName = req.body.cus_userName;
   const cus_FName = req.body.cus_FName;
