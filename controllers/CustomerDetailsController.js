@@ -72,6 +72,7 @@ exports.updateCustomer = async (req, res) => {
     });
 };
 
+//-----DELETE customer--------
 exports.deleteCustomer = async (req, res) => {
   let cus_id = req.params.cus_id;
 
