@@ -30,3 +30,7 @@ app.listen(PORT, () => {
 
 const eventAddRouter = require("./routes/EventAddRT.js");
 app.use("/eventAdd", eventAddRouter);
+
+
+const customerDetailsRouter = require("./routes/CustomerDetailsRT.js");
+app.use("/customer-details", customerDetailsRouter);
