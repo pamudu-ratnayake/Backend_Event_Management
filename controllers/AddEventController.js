@@ -42,6 +42,7 @@ exports.postAddEvent = (req, res, next) => {
     });
 };
 
+//------GET-------
 exports.getAllEvents = (req, res, next) => {
   AddEvents.find()
     .then((events) => {
