@@ -45,6 +45,7 @@ exports.getCustomers = (req, res, next) => {
     });
 };
 
+//-----update------
 exports.updateCustomer = async (req, res) => {
   let cus_id = req.params.cus_id;
   const { cus_userName, cus_FName, cus_LName, cus_nic, cus_gender, cus_address, cus_contact_no, cus_email, cus_description } = req.body;
