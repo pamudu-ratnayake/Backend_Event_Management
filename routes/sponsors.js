@@ -11,5 +11,4 @@ router.delete("/deleteSponsor/:id", sponsorController.sponsorDelete);
 
 router.get("/getSponsor/:id", sponsorController.sponsorGet);
 
-
 module.exports = router;

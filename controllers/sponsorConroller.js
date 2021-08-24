@@ -1,20 +1,20 @@
-const router = require("express").Router();
 const sponsor = require("../models/sponsor");
-const express = require("express");
 
 const sponsorPost = (req, res, next) => {
-  const sponsorID = req.body.sponsorID;
+  const regNo = req.body.regNo;
   const companyName = req.body.companyName;
   const sponsorType = req.body.sponsorType;
-  const phoneNumber = Number(req.body.phoneNumber);
-  const email = req.body.email;
+  const SponsorPhoneNo = Number(req.body.SponsorPhoneNo);
+  const sponsorEmail = req.body.sponsorEmail;
+  const sponsorAddress = req.body.sponsorAddress;
 
   const newSponsor = new sponsor({
-    sponsorID,
+    regNo,
     companyName,
     sponsorType,
-    phoneNumber,
-    email,
+    SponsorPhoneNo,
+    sponsorEmail,
+    sponsorAddress,
   });
 
   newSponsor
@@ -40,18 +40,19 @@ const sponsorsGet = (req, res, next) => {
 
 const sponsorUpdate = (req, res, next) => {
 
-  let sponsorID =  req.params.id;
-  const {companyName, sponsorType, phoneNumber, email} = req.body;
+  let ID =  req.params.id;
+  const {regNo, companyName, sponsorType, SponsorPhoneNo, sponsorEmail,sponsorAddress} = req.body;
 
   const updateSponsor = {
-    sponsorID,
+    regNo,
     companyName,
     sponsorType,
-    phoneNumber,
-    email
+    SponsorPhoneNo,
+    sponsorEmail,
+    sponsorAddress
   }
 
-  const update = sponsor.findByIdAndUpdate(sponsorID, updateSponsor).then(()=>{
+  const update = sponsor.findByIdAndUpdate(ID, updateSponsor).then(()=>{
   res.status(200).send({status: "User Updated", user: update})
 }).catch((err) => {
   console.log(err);
@@ -60,21 +61,20 @@ const sponsorUpdate = (req, res, next) => {
 };
 
 const sponsorDelete = (req, res, next) => {
-  let sponsorID = req.params.id;
-  sponsor.findByIdAndDelete(sponsorID)
+  let ID = req.params.id;
+  sponsor.findByIdAndDelete(ID)
   .then(() => {
-    res.status(200).send({status: "User Deleted"});
+    res.status(200).send({status: "Sponsor Deleted"});
   }).catch((err)=> {
     console.log(err.message);
     res.status(500).send({status: "Error with delete user", erroe: err.message})
   })
 }
 
-
 const sponsorGet = (req, res, next) => {
-  let sponsorID = req.params.id;
+  let ID = req.params.id;
 
-  const sponsorInfor = sponsor.findById(sponsorID)
+  const sponsorInfor = sponsor.findById(ID)
   .then((sponsorData) => {
     res.json(sponsorData).status(200).send({status: "User fetched", user: sponsorInfor})
   }).catch(() => {

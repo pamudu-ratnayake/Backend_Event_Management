@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const SponsorSchema = new mongoose.Schema({
-  sponsorID: {
+  regNo: {
     type: String,
     require: true,
   },
@@ -13,11 +13,15 @@ const SponsorSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  phoneNumber: {
+  SponsorPhoneNo: {
     type: Number,
     required: true,
   },
-  email: {
+  sponsorEmail: {
+    type: String,
+    required: true,
+  },
+  sponsorAddress: {
     type: String,
     required: true,
   }
