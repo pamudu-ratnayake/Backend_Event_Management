@@ -8,6 +8,7 @@ const addAdvertisement = (req, res, next) => {
   const contact_Number_SP = Number(req.body.contact_Number_SP);
   const service_Type = req.body.service_Type;
   const advertisement_Duration = req.body.advertisement_Duration;
+  const advertisement_title = req.body.advertisement_title;
   const advertisement_Des = req.body.advertisement_Des;
   const advertisement_Pic = req.body.advertisement_Pic;
   // const PType = req.body.PType;
@@ -22,6 +23,7 @@ const addAdvertisement = (req, res, next) => {
     contact_Number_SP,
     service_Type,
     advertisement_Duration,
+    advertisement_title,
     advertisement_Des,
     advertisement_Pic
     // PType,
@@ -49,7 +51,7 @@ const viewAdvertisement = (req, res, next) => {
 
 const updateAdvertisement = async (req, res, next) => {
   const advertisementid = req.params.id;
-  const { service_Provider_Name, email_SP, contact_Number_SP, service_Type, advertisement_Duration,advertisement_Des,advertisement_Pic} =
+  const { service_Provider_Name, email_SP, contact_Number_SP, service_Type, advertisement_Duration,advertisement_title,advertisement_Des,advertisement_Pic} =
     req.body;
 
   const updateAdd = {
@@ -60,6 +62,7 @@ const updateAdvertisement = async (req, res, next) => {
     contact_Number_SP,
     service_Type,
     advertisement_Duration,
+    advertisement_title,
     advertisement_Des,
     advertisement_Pic
     // PType,

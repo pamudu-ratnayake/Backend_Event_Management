@@ -29,6 +29,10 @@ const AdvertisementSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  advertisement_title: {
+    type: String,
+    required: true,
+  },
   advertisement_Des: {
     type: String,
     required: true,
@@ -43,5 +47,5 @@ const AdvertisementSchema = new mongoose.Schema({
   // },
 });
 
-const Advertisement = mongoose.model("AdvertisementDetails", AdvertisementSchema);
+const Advertisement = mongoose.model("Advertisement Details", AdvertisementSchema);
 module.exports = Advertisement;
