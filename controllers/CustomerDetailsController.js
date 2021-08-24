@@ -34,6 +34,7 @@ exports.postCustomerDetails = (req, res, next) => {
     });
 };
 
+//----GET----
 exports.getCustomers = (req, res, next) => {
   Customers.find()
     .then((customers) => {
