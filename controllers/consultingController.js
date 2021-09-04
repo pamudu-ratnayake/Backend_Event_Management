@@ -2,6 +2,7 @@ const consulting = require("../models/consultingMd");
 
 const consultingPost = (req, res, next) => {
   const issue = req.body.issue;
+  const eventID = req.body.eventID;
   const answer1 = req.body.answer1;
   const answer2 = req.body.answer2;
   const answer3 = req.body.answer3;
@@ -11,6 +12,7 @@ const consultingPost = (req, res, next) => {
 
   const newConsulting = new consulting({
     issue,
+    eventID,
     answer1,
     answer2,
     answer3,
@@ -42,10 +44,11 @@ const consultingsGet = (req, res, next) => {
 
 const consultingUpdate = (req, res, next) => {
   let ID = req.params.id;
-  const { issue, answer1, answer2, answer3, answer4, answer5, answer6 } = req.body;
+  const { issue, eventID, answer1, answer2, answer3, answer4, answer5, answer6 } = req.body;
 
   const updateConsulting = {
     issue,
+    eventID,
     answer1,
     answer2,
     answer3,

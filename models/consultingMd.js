@@ -5,6 +5,10 @@ const ConsultingSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
+  eventID: {
+    type: String,
+    require: true,
+  },
   answer1: {
     type: String,
     // required: true,
