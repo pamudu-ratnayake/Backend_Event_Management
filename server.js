@@ -29,5 +29,7 @@ app.listen(PORT, () => {
 });
 
 const sponsorRouter = require("./routes/sponsors.js");
-
 app.use("/sponsor", sponsorRouter);
+
+const consultingRouter = require("./routes/consultingRt.js");
+app.use("/consulting", consultingRouter);
