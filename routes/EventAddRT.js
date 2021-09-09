@@ -1,6 +1,7 @@
 const router = require("express").Router();
 let AddEvents = require("../controllers/AddEventController");
 
+//routes
 router.post("/addevent", AddEvents.postAddEvent);
 router.get("/getevents", AddEvents.getAllEvents);
 router.put("/updateevent/:event_id", AddEvents.updateEvent);
