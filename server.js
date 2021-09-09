@@ -27,3 +27,9 @@ connection.once("open", () => {
 app.listen(PORT, () => {
   console.log(`Server is up and running on port ${PORT}`);
 });
+
+const sponsorRouter = require("./routes/sponsors.js");
+app.use("/sponsor", sponsorRouter);
+
+const consultingRouter = require("./routes/consultingRt.js");
+app.use("/consulting", consultingRouter);
