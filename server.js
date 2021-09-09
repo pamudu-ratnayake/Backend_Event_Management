@@ -28,6 +28,7 @@ app.listen(PORT, () => {
   console.log(`Server is up and running on port ${PORT}`);
 });
 
+//events
 const eventAddRouter = require("./routes/EventAddRT.js");
 app.use("/eventAdd", eventAddRouter);
 
