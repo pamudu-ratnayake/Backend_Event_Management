@@ -86,6 +86,7 @@ exports.deleteCustomer = async (req, res) => {
     });
 };
 
+//---------GET One Customer------------------
 exports.getOneCustomer = async (req, res) => {
   let cus_id = req.params.cus_id;
 
