@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 8080;
 app.use(cors());
 app.use(bodyParser.json());
 
+//DB URL
 const URL = process.env.MONGODB_URL;
 
 mongoose.connect(URL, {
