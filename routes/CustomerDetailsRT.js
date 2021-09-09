@@ -1,6 +1,7 @@
 const router = require("express").Router();
 let Customers = require("../controllers/CustomerDetailsController");
 
+//routes
 router.post("/add-customer", Customers.postCustomerDetails);
 router.get("/get-customers", Customers.getCustomers);
 router.put("/update-customer/:cus_id", Customers.updateCustomer);
