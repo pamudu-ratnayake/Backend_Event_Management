@@ -53,7 +53,7 @@ exports.getAllEvents = (req, res, next) => {
     });
 };
 
-//--------update-------------
+//--------update-----------
 exports.updateEvent = async (req, res) => {
   let event_id = req.params.event_id;
   const { event_name, org_name, date_of_the_event, location, event_time, days_occurs, event_type, organizer_name, org_nic, cus_email, cus_con_number, description } = req.body;
