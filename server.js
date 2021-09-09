@@ -32,6 +32,6 @@ app.listen(PORT, () => {
 const eventAddRouter = require("./routes/EventAddRT.js");
 app.use("/eventAdd", eventAddRouter);
 
-
+//customer 
 const customerDetailsRouter = require("./routes/CustomerDetailsRT.js");
 app.use("/customer-details", customerDetailsRouter);
