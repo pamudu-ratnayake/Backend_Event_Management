@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+// Consulting model class
+
 const ConsultingSchema = new mongoose.Schema({
   issue: {
     type: String,
