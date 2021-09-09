@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
+//customer class
 const customerDetails = new Schema({
 
     cus_userName: {
