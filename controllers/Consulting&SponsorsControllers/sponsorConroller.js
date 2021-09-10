@@ -1,4 +1,4 @@
-const sponsor = require("../../models/sponsor");
+const sponsor = require("../../models/Consulting&SponsorsModels/sponsor");
 
 // sponsor controller
 
