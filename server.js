@@ -49,5 +49,5 @@ app.use("/company", companyRouter);
 const sponsorRouter = require("./routes/sponsors.js");
 app.use("/sponsor", sponsorRouter);
 
-const consultingRouter = require("./routes/consultingRt.js");
+const consultingRouter = require("./routes/Consulting&SponsorsRoutes/consultingRt.js");
 app.use("/consulting", consultingRouter);
