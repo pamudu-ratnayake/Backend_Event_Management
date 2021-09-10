@@ -1,4 +1,6 @@
-const sponsor = require("../models/sponsor");
+const sponsor = require("../../models/Consulting&SponsorsModels/sponsor");
+
+// sponsor controller
 
 const sponsorPost = (req, res, next) => {
   const regNo = req.body.regNo;
