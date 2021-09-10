@@ -25,6 +25,10 @@ connection.once("open", () => {
 	console.log(`<=== Running on URL: http://localhost:${PORT} ====>`);
 });
 
+const AdvertisementRouter = require("./routes/Ad/BoostingRouters/Advertisements.js");
+
+app.use("/advertisement",AdvertisementRouter);
+
 app.listen(PORT, () => {
 	console.log(`<=== Server is up and running on port ${PORT} ====>`);
 });
