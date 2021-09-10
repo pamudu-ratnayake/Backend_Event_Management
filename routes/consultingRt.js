@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const sponsorController = require("../controllers/consultingController");
+const sponsorController = require("../controllers/Consulting&SponsorsControllers/consultingController");
 
 router.post("/addIssue", sponsorController.consultingPost);
 
