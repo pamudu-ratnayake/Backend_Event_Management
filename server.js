@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 8080;
 app.use(cors());
 app.use(bodyParser.json());
 
+//DB URL
 const URL = process.env.MONGODB_URL;
 
 mongoose.connect(URL, {
@@ -33,9 +34,13 @@ app.listen(PORT, () => {
 	console.log(`<=== Server is up and running on port ${PORT} ====>`);
 });
 
-const eventAddRouter = require("./routes/EventAddRT.js");
+//events
+const eventAddRouter = require("./routes/Event&CustomerRoutes/EventAddRT.js");
 app.use("/eventAdd", eventAddRouter);
 
+//customer 
+const customerDetailsRouter = require("./routes/Event&CustomerRoutes/CustomerDetailsRT.js");
+app.use("/customer-details", customerDetailsRouter);
 // Service Provider Routes
 const serviceProviderRouter = require("./routes/ServiceProviderRoutesrs/ServiceProviderRT.js");
 app.use("/serviceProvider", serviceProviderRouter);
