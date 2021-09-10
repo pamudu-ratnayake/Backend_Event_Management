@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-// sponsor details
 const SponsorSchema = new mongoose.Schema({
   regNo: {
     type: String,

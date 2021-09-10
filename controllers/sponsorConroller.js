@@ -1,5 +1,7 @@
 const sponsor = require("../models/sponsor");
 
+// sponsor controller
+
 const sponsorPost = (req, res, next) => {
   const regNo = req.body.regNo;
   const companyName = req.body.companyName;
