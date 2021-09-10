@@ -1,4 +1,4 @@
-let AddEvents = require("../models/EventAdd");
+let AddEvents = require("../../models/Event&CustomerModels/EventAdd");
 
 //-----POST-----
 exports.postAddEvent = (req, res, next) => {

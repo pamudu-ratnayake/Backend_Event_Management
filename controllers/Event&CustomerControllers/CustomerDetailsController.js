@@ -1,4 +1,4 @@
-let Customers = require("../models/CustomerDetails");
+let Customers = require("../../models/Event&CustomerModels/CustomerDetails");
 
 //---post---
 exports.postCustomerDetails = (req, res, next) => {

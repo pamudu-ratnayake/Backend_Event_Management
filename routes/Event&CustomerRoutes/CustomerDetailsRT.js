@@ -1,5 +1,5 @@
 const router = require("express").Router();
-let Customers = require("../controllers/CustomerDetailsController");
+let Customers = require("../../controllers/Event&CustomerControllers/CustomerDetailsController");
 
 //routes
 router.post("/add-customer", Customers.postCustomerDetails);
