@@ -13,15 +13,16 @@ app.use(bodyParser.json());
 const URL = process.env.MONGODB_URL;
 
 mongoose.connect(URL, {
-  useCreateIndex: true,
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
+	useCreateIndex: true,
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+	useFindAndModify: false,
 });
 
 const connection = mongoose.connection;
 connection.once("open", () => {
-  console.log("Database connected!");
+	console.log("        <=== Database connected ! ====>");
+	console.log(`<=== Running on URL: http://localhost:${PORT} ====>`);
 });
 
 const AdvertisementRouter = require("./routes/Advertisements.js");
@@ -29,5 +30,19 @@ const AdvertisementRouter = require("./routes/Advertisements.js");
 app.use("/advertisement",AdvertisementRouter);
 
 app.listen(PORT, () => {
-  console.log(`Server is up and running on port ${PORT}`);
+	console.log(`<=== Server is up and running on port ${PORT} ====>`);
 });
+
+const eventAddRouter = require("./routes/EventAddRT.js");
+app.use("/eventAdd", eventAddRouter);
+
+// Service Provider Routes
+const serviceProviderRouter = require("./routes/ServiceProviderRoutesrs/ServiceProviderRT.js");
+app.use("/serviceProvider", serviceProviderRouter);
+const companyRouter = require("./routes/ServiceProviderRoutesrs/CompanyRT.js");
+app.use("/company", companyRouter);
+const sponsorRouter = require("./routes/sponsors.js");
+app.use("/sponsor", sponsorRouter);
+
+const consultingRouter = require("./routes/consultingRt.js");
+app.use("/consulting", consultingRouter);
