@@ -37,3 +37,8 @@ const serviceProviderRouter = require("./routes/ServiceProviderRoutesrs/ServiceP
 app.use("/serviceProvider", serviceProviderRouter);
 const companyRouter = require("./routes/ServiceProviderRoutesrs/CompanyRT.js");
 app.use("/company", companyRouter);
+const sponsorRouter = require("./routes/sponsors.js");
+app.use("/sponsor", sponsorRouter);
+
+const consultingRouter = require("./routes/consultingRt.js");
+app.use("/consulting", consultingRouter);
