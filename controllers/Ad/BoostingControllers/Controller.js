@@ -1,4 +1,4 @@
-const Advertisement = require("../models/Advertisement");
+const Advertisement = require("../../../models/Ad/BoostingModels/Advertisement");
 
 const addAdvertisement = (req, res, next) => {
   const  service_Provider_Name = req.body. service_Provider_Name;
