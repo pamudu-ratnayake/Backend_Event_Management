@@ -1,6 +1,6 @@
 const router = require("express").Router();
 // const Advertisement = require("../models/Advertisement");
-const Controller = require("../../../controllers/Ad/BoostingControllers/Controller");
+const Controller = require("../../controllers/Ad&BoostingControllers/Controller");
 
 router.post("/addadvertisement", Controller.addAdvertisement);
 
