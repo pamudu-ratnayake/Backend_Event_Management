@@ -13,8 +13,6 @@ const addAdvertisement = (req, res, next) => {
   const advertisement_Pic = req.body.advertisement_Pic;
   // const PType = req.body.PType;
 
-  // console.log('Come up to this');
-
   const newAdvertisement = new Advertisement({
     service_Provider_Name,
     // SPID,
