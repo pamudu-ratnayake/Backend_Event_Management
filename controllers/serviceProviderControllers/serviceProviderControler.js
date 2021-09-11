@@ -14,7 +14,6 @@ exports.createServiceProvider = (req, res, next) => {
 	const address = req.body.address;
 	const password = req.body.password;
 
-	//  Create new Service provider Instance
 	const newServiceProvider = new ServiceProviderModel({
 		servic_provider_Id,
 		nic_no,
@@ -28,7 +27,6 @@ exports.createServiceProvider = (req, res, next) => {
 		password,
 	});
 
-	// Save Service Provider
 	newServiceProvider
 		.save()
 		.then(() => {
@@ -39,7 +37,6 @@ exports.createServiceProvider = (req, res, next) => {
 		});
 };
 
-// Get All Servicer Providers
 exports.getAllServicerProviders = (req, res, next) => {
 	console.log(`<=== Get All Servicer Providers ====>`);
 	ServiceProviderModel.find()
@@ -51,7 +48,6 @@ exports.getAllServicerProviders = (req, res, next) => {
 		});
 };
 
-// Update Servicer Provider
 exports.updateServiceProvider = async (req, res) => {
 	console.log(`<=== Update Servicer Provider ====>`);
 	let id = req.params.id;
@@ -95,7 +91,6 @@ exports.updateServiceProvider = async (req, res) => {
 		});
 };
 
-// Delete Servicer Provider
 exports.deleteServiceProvider = async (req, res) => {
 	console.log(`<=== Delete Servicer Provider ====>`);
 	let id = req.params.id;
@@ -110,7 +105,6 @@ exports.deleteServiceProvider = async (req, res) => {
 		});
 };
 
-// Get Servicer Provider
 exports.getServiceProvider = async (req, res) => {
 	console.log(`<=== Get Servicer Provider ====>`);
 
@@ -125,7 +119,6 @@ exports.getServiceProvider = async (req, res) => {
 		});
 };
 
-// Get All Servicer Providers
 exports.getAllServicerProviderOne = (req, res, next) => {
 	console.log(`<=== Get All Servicer Providers ====>`);
 	ServiceProviderModel.find()
