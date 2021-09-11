@@ -1,4 +1,4 @@
-const consulting = require("../models/consultingMd");
+const consulting = require("../../models/Consulting&SponsorsModels/consultingMd");
 
 const consultingPost = (req, res, next) => {
   const issue = req.body.issue;
