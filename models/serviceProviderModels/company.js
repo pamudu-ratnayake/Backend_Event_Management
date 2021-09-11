@@ -5,10 +5,10 @@ const companySchema = new mongoose.Schema({
 		type: String,
 		// required: true,
 	},
-	// company_name: {
-	// 	type: String,
-	// 	// required: true,
-	// },
+	company_name: {
+		type: String,
+		// required: true,
+	},
 	service_provider_type: {
 		type: String,
 		// required: true,

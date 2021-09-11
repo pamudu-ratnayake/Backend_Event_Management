@@ -17,15 +17,15 @@ exports.createCompany = async (req, res, next) => {
 		file,
 	});
 
-	await newCompany
-		.save()
-		.then((company) => {
-			console.log(company);
-			res.json(company);
-		})
-		.catch((err) => {
-			console.log(err);
-		});
+	// await newCompany
+	// 	.save()
+	// 	.then((company) => {
+	// 		console.log(company);
+	// 		res.json(company);
+	// 	})
+	// 	.catch((err) => {
+	// 		console.log(err);
+	// 	});
 };
 
 exports.getAllCompanies = (req, res, next) => {
