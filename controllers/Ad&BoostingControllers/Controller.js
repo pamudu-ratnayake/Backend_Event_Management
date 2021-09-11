@@ -1,6 +1,6 @@
 const Advertisement = require("../../models/Ad&BoostingModules/Advertisement");
 
-//control class
+//control class----------
 const addAdvertisement = (req, res, next) => {
   const  service_Provider_Name = req.body. service_Provider_Name;
   // const SPID = req.body.SPID;
