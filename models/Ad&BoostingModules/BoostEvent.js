@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+
 const EventBoostSchema = new mongoose.Schema({
     Customer_Name: {
     type: String,
