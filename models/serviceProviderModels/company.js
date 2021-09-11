@@ -3,22 +3,22 @@ const mongoose = require("mongoose");
 const companySchema = new mongoose.Schema({
 	company_Id: {
 		type: String,
-		required: true,
+		// required: true,
 	},
 	company_name: {
 		type: String,
-		required: true,
+		// required: true,
 	},
 	service_provider_type: {
 		type: String,
-		required: true,
+		// required: true,
 	},
 	details: {
 		type: String,
 	},
 	file: {
 		type: String,
-		required: true,
+		// required: true,
 	},
 });
 
