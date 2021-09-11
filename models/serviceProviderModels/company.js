@@ -24,4 +24,5 @@ const companySchema = new mongoose.Schema({
 
 const Company = mongoose.model("company", companySchema);
 
+// Export Modal
 module.exports = Company;
