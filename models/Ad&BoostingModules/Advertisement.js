@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+//Advertiesment model
 const AdvertisementSchema = new mongoose.Schema({
   service_Provider_Name: {
     type: String,
