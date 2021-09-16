@@ -1,5 +1,6 @@
 let Customers = require("../../models/Event&CustomerModels/CustomerDetails");
 
+
 //---post---
 exports.postCustomerDetails = (req, res, next) => {
   const cus_userName = req.body.cus_userName;
@@ -11,8 +12,9 @@ exports.postCustomerDetails = (req, res, next) => {
   const cus_contact_no = req.body.cus_contact_no;
   const cus_email = req.body.cus_email;
   const cus_description = req.body.cus_description;
+  const prof_img = req.file.originalname;
 
-  const newCustomer = new newCustomer({
+  const newCustomer = new Customers({
     cus_userName,
     cus_FName,
     cus_LName,
@@ -22,9 +24,10 @@ exports.postCustomerDetails = (req, res, next) => {
     cus_contact_no,
     cus_email,
     cus_description,
+    prof_img,
   });
 
-  newEvent
+  newCustomer
     .save()
     .then(() => {
       res.json("Customer Added");

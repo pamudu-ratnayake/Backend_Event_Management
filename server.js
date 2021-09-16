@@ -40,7 +40,7 @@ app.use("/eventAdd", eventAddRouter);
 
 //customer 
 const customerDetailsRouter = require("./routes/Event&CustomerRoutes/CustomerDetailsRT.js");
-app.use("/customer-details", customerDetailsRouter);
+app.use("/customerdetails", customerDetailsRouter);
 // Service Provider Routes
 const serviceProviderRouter = require("./routes/ServiceProviderRoutesrs/ServiceProviderRT.js");
 app.use("/serviceProvider", serviceProviderRouter);
