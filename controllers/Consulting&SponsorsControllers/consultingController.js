@@ -3,22 +3,12 @@ const consulting = require("../../models/Consulting&SponsorsModels/consultingMd"
 const consultingPost = (req, res, next) => {
   const issue = req.body.issue;
   const eventID = req.body.eventID;
-  const answer1 = req.body.answer1;
-  const answer2 = req.body.answer2;
-  const answer3 = req.body.answer3;
-  const answer4 = req.body.answer4;
-  const answer5 = req.body.answer5;
-  const answer6 = req.body.answer6;
+  const answers = req.body.answers;
 
   const newConsulting = new consulting({
     issue,
     eventID,
-    answer1,
-    answer2,
-    answer3,
-    answer4,
-    answer5,
-    answer6,
+    answers,
   });
 
   newConsulting
@@ -44,17 +34,12 @@ const consultingsGet = (req, res, next) => {
 
 const consultingUpdate = (req, res, next) => {
   let ID = req.params.id;
-  const { issue, eventID, answer1, answer2, answer3, answer4, answer5, answer6 } = req.body;
+  const { issue, eventID, answers } = req.body;
 
   const updateConsulting = {
     issue,
     eventID,
-    answer1,
-    answer2,
-    answer3,
-    answer4,
-    answer5,
-    answer6,
+    answers,
   };
 
   const update = consulting
