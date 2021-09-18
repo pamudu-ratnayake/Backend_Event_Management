@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "dev" : "nodemon server.js"
+    "dev": "nodemon server.js"
   },
   "author": "Pamudu and Hansani and Oshini and Malith",
   "license": "ISC",
