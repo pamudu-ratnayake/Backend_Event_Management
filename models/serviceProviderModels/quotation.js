@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const quotationSchema = new mongoose.Schema({
 	event_id: {
 		type: mongoose.Schema.Types.ObjectId,
+		ref: "Events",
 	},
 	date_from: {
 		type: String,
@@ -37,6 +38,6 @@ const quotationSchema = new mongoose.Schema({
 	},
 });
 
-const Company = mongoose.model("company", companySchema);
+const Quotation = mongoose.model("Quotation", quotationSchema);
 
-module.exports = Company;
+module.exports = Quotation;
