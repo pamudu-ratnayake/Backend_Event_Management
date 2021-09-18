@@ -51,6 +51,10 @@ const eventAddSchema = new Schema({
     type: String,
     required: true,
   },
+  checkboxOption: {
+    type: Array,
+    required: true,
+  }
 });
 
 const Events = mongoose.model("Events", eventAddSchema);

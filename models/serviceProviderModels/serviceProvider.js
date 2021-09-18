@@ -40,9 +40,11 @@ const serviceProviderSchema = new mongoose.Schema({
 	},
 });
 
+//  Calling monggose modael Metod
 const ServiceProvider = mongoose.model(
 	"serviceProvider",
 	serviceProviderSchema
 );
 
+//  Export Modal
 module.exports = ServiceProvider;
