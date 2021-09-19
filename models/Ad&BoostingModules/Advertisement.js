@@ -54,3 +54,4 @@ const AdvertisementSchema = new mongoose.Schema({
 
 const Advertisement = mongoose.model("Advertisement Details", AdvertisementSchema);
 module.exports = Advertisement;
+
