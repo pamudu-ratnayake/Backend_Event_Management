@@ -103,10 +103,21 @@ const viewoneAdvertisement = (req, res, next) => {
     });
 };
 
+const boostAdvertisement = (req, res, next) => {
+  let advertisementid = req.params.id; 
+  Advertisement.findById(advertisementid)
+    .then((Advertisement) => {
+      res.json(Advertisement);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 module.exports = {
   addAdvertisement,
   viewAdvertisement,
   updateAdvertisement,
   deleteAdvertisement,
-  viewoneAdvertisement
+  viewoneAdvertisement,
+  boostAdvertisement
 };
