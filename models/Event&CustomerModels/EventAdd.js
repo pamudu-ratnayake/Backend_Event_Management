@@ -54,6 +54,10 @@ const eventAddSchema = new Schema({
   checkboxOption: {
     type: Array,
     required: true,
+  },
+  user_id:{
+    type: String,
+    required:true,
   }
 });
 

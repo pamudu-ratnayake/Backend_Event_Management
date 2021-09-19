@@ -14,6 +14,7 @@ exports.postAddEvent = (req, res, next) => {
   const cus_email = req.body.cus_email;
   const cus_con_number = Number(req.body.cus_con_number);
   const description = req.body.description;
+  const user_id= req.body.user_id;
   const checkboxOption = req.body.checkboxOption;
 
   const newEvent = new AddEvents({
@@ -29,6 +30,7 @@ exports.postAddEvent = (req, res, next) => {
     cus_email,
     cus_con_number,
     description,
+    user_id,
     checkboxOption,
   });
 

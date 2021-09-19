@@ -51,3 +51,6 @@ app.use("/sponsor", sponsorRouter);
 
 const consultingRouter = require("./routes/consultingRt.js");
 app.use("/consulting", consultingRouter);
+
+const authRoutes = require("./routes/auth/userRT.js")
+app.use("/auth-user" , authRoutes);
