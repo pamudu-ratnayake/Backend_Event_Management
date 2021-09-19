@@ -46,7 +46,8 @@ exports.postAddEvent = (req, res, next) => {
 
 //------GET------------
 exports.getAllEvents = (req, res, next) => {
-  AddEvents.find()
+  let user_id = req.params.user_id;
+  AddEvents.find({user_id})
     .then((events) => {
       res.json(events);
     })

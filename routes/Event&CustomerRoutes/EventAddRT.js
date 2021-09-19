@@ -3,7 +3,7 @@ let AddEvents = require("../../controllers/Event&CustomerControllers/AddEventCon
 
 //routes
 router.post("/addevent", AddEvents.postAddEvent);
-router.get("/getevents", AddEvents.getAllEvents);
+router.get("/getevents/:user_id", AddEvents.getAllEvents);
 router.put("/updateevent/:event_id", AddEvents.updateEvent);
 router.delete("/deleteevent/:event_id", AddEvents.deleteEvent);
 router.get("/getOneEvent/:event_id", AddEvents. getOneEvent);
