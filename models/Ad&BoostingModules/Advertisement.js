@@ -42,6 +42,7 @@ const AdvertisementSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  
   // PType: {
   //   type: String,
   //   required: true,
