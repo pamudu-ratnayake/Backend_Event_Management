@@ -1,6 +1,5 @@
 let Customers = require("../../models/Event&CustomerModels/CustomerDetails");
 
-
 //---post---
 exports.postCustomerDetails = (req, res, next) => {
   const cus_userName = req.body.cus_userName;
@@ -13,6 +12,7 @@ exports.postCustomerDetails = (req, res, next) => {
   const cus_email = req.body.cus_email;
   const cus_description = req.body.cus_description;
   const prof_img = req.file.originalname;
+  const user_id = req.body.user_id;
 
   const newCustomer = new Customers({
     cus_userName,
@@ -25,6 +25,7 @@ exports.postCustomerDetails = (req, res, next) => {
     cus_email,
     cus_description,
     prof_img,
+    user_id,
   });
 
   newCustomer
@@ -91,9 +92,9 @@ exports.deleteCustomer = async (req, res) => {
 
 //---------GET One Customer------------------
 exports.getOneCustomer = async (req, res) => {
-  let cus_id = req.params.cus_id;
+  let user_id = req.params.user_id;
 
-  await Customers.findById(cus_id)
+  await Customers.findOne(user_id)
     .then((customer) => {
       res.json(customer);
     })
