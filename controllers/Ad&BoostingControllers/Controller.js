@@ -107,8 +107,7 @@ const viewoneAdvertisement = (req, res, next) => {
 };
 
 const boostAdvertisement = (req, res, next) => {
-  let advertisementid = req.params.id; 
-  Advertisement.findById(advertisementid)
+  Advertisement.find()
     .then((Advertisement) => {
       res.json(Advertisement);
     })
@@ -116,6 +115,7 @@ const boostAdvertisement = (req, res, next) => {
       console.log(err);
     });
 };
+
 module.exports = {
   addAdvertisement,
   viewAdvertisement,

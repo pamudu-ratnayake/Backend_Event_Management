@@ -42,7 +42,7 @@ const AdvertisementSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  boosting_Pack:{
+  boosting_Pack: {
     type: String,
     required: false,
   }
