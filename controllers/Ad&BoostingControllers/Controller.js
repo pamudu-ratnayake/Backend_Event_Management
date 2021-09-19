@@ -12,6 +12,8 @@ const addAdvertisement = (req, res, next) => {
   const advertisement_title = req.body.advertisement_title;
   const advertisement_Des = req.body.advertisement_Des;
   const advertisement_Pic = req.body.advertisement_Pic;
+  const boosting_Pack = req.body.boosting_Pack;
+
   // const PType = req.body.PType;
 
   const newAdvertisement = new Advertisement({
@@ -24,7 +26,8 @@ const addAdvertisement = (req, res, next) => {
     advertisement_Duration,
     advertisement_title,
     advertisement_Des,
-    advertisement_Pic
+    advertisement_Pic,
+    boosting_Pack
     // PType,
   });
 

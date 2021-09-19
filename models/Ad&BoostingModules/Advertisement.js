@@ -42,7 +42,10 @@ const AdvertisementSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  
+  boosting_Pack:{
+    type: String,
+    required: false,
+  }
   // PType: {
   //   type: String,
   //   required: true,
