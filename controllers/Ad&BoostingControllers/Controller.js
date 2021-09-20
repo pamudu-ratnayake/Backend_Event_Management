@@ -66,7 +66,8 @@ const updateAdvertisement = async (req, res, next) => {
     advertisement_Duration,
     advertisement_title,
     advertisement_Des,
-    advertisement_Pic
+    advertisement_Pic,
+    boosting_Pack
     // PType,
   };
 
@@ -105,6 +106,7 @@ const viewoneAdvertisement = (req, res, next) => {
       console.log(err);
     });
 };
+
 const boostAdvertisement = async (req, res, next) => {
   const advertisementid = req.params.id;
   const {boosting_Pack } =
@@ -125,7 +127,7 @@ const updateBoostPack = await Advertisement.findByIdAndUpdate(
   .catch((err) => {
     console.log(err);
   });
-
+};
 
 module.exports = {
   addAdvertisement,
@@ -134,4 +136,4 @@ module.exports = {
   deleteAdvertisement,
   viewoneAdvertisement,
   boostAdvertisement
-};}
+};
