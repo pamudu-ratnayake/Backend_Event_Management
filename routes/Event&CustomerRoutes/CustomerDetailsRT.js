@@ -5,7 +5,7 @@ const multer = require("multer");
 
 const storage = multer.diskStorage({
   destination: (req, file, callback) =>  {
-    callback(null, "../../../../Event Management/Backend-Event-Management/uploads");
+    callback(null, "../../../../Event Management/Backend-Event-Management/public/uploads/");
   },
   filename: (req, file, callback) => {
     callback(null, file.originalname)
@@ -19,6 +19,6 @@ router.post("/addcustomer",upload.single("file"), Customers.postCustomerDetails)
 router.get("/get-customers", Customers.getCustomers);
 router.put("/update-customer/:cus_id", Customers.updateCustomer);
 router.delete("/delet-customer/:cus_id", Customers.deleteCustomer);
-router.get("/getOneCustomer/:cus_id", Customers.getOneCustomer);
+router.get("/getOneCustomer/:user_id", Customers.getOneCustomer);
 
 module.exports = router;

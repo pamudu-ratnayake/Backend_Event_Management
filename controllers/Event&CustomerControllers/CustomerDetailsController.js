@@ -1,4 +1,5 @@
 let Customers = require("../../models/Event&CustomerModels/CustomerDetails");
+let User = require("../../models/auth/user")
 
 //---post---
 exports.postCustomerDetails = (req, res, next) => {
@@ -41,6 +42,17 @@ exports.postCustomerDetails = (req, res, next) => {
 //----GET----
 exports.getCustomers = (req, res, next) => {
   Customers.find()
+    .then((customers) => {
+      res.json(customers);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+//----GET User Details----
+exports.getUser = (req, res, next) => {
+  User.find()
     .then((customers) => {
       res.json(customers);
     })
@@ -94,7 +106,7 @@ exports.deleteCustomer = async (req, res) => {
 exports.getOneCustomer = async (req, res) => {
   let user_id = req.params.user_id;
 
-  await Customers.findOne(user_id)
+  await Customers.findOne({user_id})
     .then((customer) => {
       res.json(customer);
     })

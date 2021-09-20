@@ -14,7 +14,7 @@ exports.postAddEvent = (req, res, next) => {
   const cus_email = req.body.cus_email;
   const cus_con_number = Number(req.body.cus_con_number);
   const description = req.body.description;
-  const user_id= req.body.user_id;
+  const user_id = req.body.user_id;
   const checkboxOption = req.body.checkboxOption;
 
   const newEvent = new AddEvents({
@@ -46,8 +46,8 @@ exports.postAddEvent = (req, res, next) => {
 
 //------GET------------
 exports.getAllEvents = (req, res, next) => {
-  let user_id = req.params.user_id;
-  AddEvents.find({user_id})
+  let user_id = req.userId;
+  AddEvents.find({ user_id })
     .then((events) => {
       res.json(events);
     })
