@@ -11,6 +11,8 @@ exports.postAddEvent = (req, res, next) => {
   const event_type = req.body.event_type;
   const organizer_name = req.body.organizer_name;
   const org_nic = req.body.org_nic;
+  const boosting_event = req.body.boosting_event;
+  const boosting_Purpose = req.body.boosting_Purpose;
   const cus_email = req.body.cus_email;
   const cus_con_number = Number(req.body.cus_con_number);
   const description = req.body.description;
@@ -30,6 +32,8 @@ exports.postAddEvent = (req, res, next) => {
     cus_con_number,
     description,
     checkboxOption,
+    boosting_event,
+    boosting_Purpose,
   });
 
   newEvent
@@ -71,6 +75,7 @@ exports.updateEvent = async (req, res) => {
     cus_email,
     cus_con_number,
     description,
+    
   };
 
   const update = await AddEvents.findByIdAndUpdate(event_id, eventUpdate)
@@ -105,5 +110,25 @@ exports.getOneEvent = async (req, res) => {
     })
     .catch((err) => {
       console.log(err);
+    });
+};
+
+exports.boostEvent = async (req, res) => {
+  let event_id = req.params.event_id;
+  const { boosting_event, boosting_Purpose} = req.body;
+
+  const boostingEvent = {
+    boosting_event,
+    boosting_Purpose
+
+  };
+
+  const update = await AddEvents.findByIdAndUpdate(event_id, boostingEvent)
+    .then(() => {
+      res.status(200).send({ status: "Event Updated!" });
+    })
+    .catch((err) => {
+      res.status(500).send({ status: "Error! Cannot Update!" });
+      console.log(err.message);
     });
 };

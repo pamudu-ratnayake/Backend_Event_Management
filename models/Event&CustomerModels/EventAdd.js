@@ -54,6 +54,15 @@ const eventAddSchema = new Schema({
   checkboxOption: {
     type: Array,
     required: true,
+  },
+  boosting_event: {
+    type: String,
+    required: false,
+  },
+  boosting_Purpose: {
+    type: String,
+    required: false,
+
   }
 });
 
