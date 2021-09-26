@@ -46,7 +46,7 @@ exports.getAllCompanies = (req, res, next) => {
 
 // Update company
 exports.updateCompany = async (req, res) => {
-	console.log(`<=== Update Servicer Provider ====>`);
+	console.log(`<=== Update Company ====>`);
 	let id = req.params.id;
 	const { company_Id, company_name, service_provider_type, details, file } =
 		req.body;
@@ -63,7 +63,7 @@ exports.updateCompany = async (req, res) => {
 
 	const update = await Company.findByIdAndUpdate(id, companyUpdate)
 		.then(() => {
-			res.status(200).send({ status: "Service Provider Updated!" });
+			res.status(200).send({ status: "Company Updated!" });
 		})
 		.catch((err) => {
 			res.status(500).send({ status: "Error! Cannot Update!" });
@@ -87,7 +87,7 @@ exports.deleteCompany = async (req, res) => {
 };
 
 // Get Company by ID
-exports.getServiceProvider = async (req, res) => {
+exports.getCompany = async (req, res) => {
 	console.log(`<=== Get Company ====>`);
 
 	let id = req.params.id;
