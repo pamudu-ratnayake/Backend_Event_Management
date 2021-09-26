@@ -132,7 +132,6 @@ exports.getAllServicerProviderOne = (req, res, next) => {
 		.sort({ _id: -1 })
 		.limit(1)
 		.then((serviceProvider) => {
-			console.log(serviceProvider);
 			res.json(serviceProvider);
 		})
 		.catch((err) => {

@@ -5,6 +5,9 @@ const quotationSchema = new mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "Events",
 	},
+	provider_id: {
+		type: "String",
+	},
 	date_from: {
 		type: String,
 		// required: true,

@@ -4,6 +4,7 @@ exports.createQuotation = async (req, res, next) => {
 	console.log(`<=== Create Quotation  ====>`);
 	// Assigning value to variabales
 	const event_id = req.body.event_id;
+	const provider_id = req.body.provider_id;
 	const date_from = req.body.date_from;
 	const date_to = req.body.date_to;
 	const quotation_details = req.body.quotation_details;
@@ -13,6 +14,7 @@ exports.createQuotation = async (req, res, next) => {
 	// Create new Quotation
 	const newQuotation = new Quotation({
 		event_id,
+		provider_id,
 		date_from,
 		date_to,
 		quotation_details,
@@ -24,7 +26,6 @@ exports.createQuotation = async (req, res, next) => {
 	await newQuotation
 		.save()
 		.then((quotation) => {
-			console.log(quotation);
 			res.json(quotation);
 		})
 		.catch((err) => {
@@ -38,7 +39,6 @@ exports.getAllQuotation = (req, res, next) => {
 	Quotation.find()
 		.populate("event_id")
 		.then((quotation) => {
-			console.log(quotation);
 			res.json(quotation);
 		})
 		.catch((err) => {
