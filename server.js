@@ -40,7 +40,7 @@ app.use("/eventAdd", eventAddRouter);
 
 //customer
 const customerDetailsRouter = require("./routes/Event&CustomerRoutes/CustomerDetailsRT.js");
-app.use("/customer-details", customerDetailsRouter);
+app.use("/customerdetails", customerDetailsRouter);
 // Service Provider Routes
 const serviceProviderRouter = require("./routes/ServiceProviderRoutesrs/ServiceProviderRT.js");
 app.use("/serviceProvider", serviceProviderRouter);
@@ -54,6 +54,8 @@ app.use("/sponsor", sponsorRouter);
 const consultingRouter = require("./routes/Consulting&SponsorsRoutes/consultingRt.js");
 app.use("/consulting", consultingRouter);
 
+const authRoutes = require("./routes/auth/userRT.js")
+app.use("/auth-user" , authRoutes);
 // Quotation Routes
 const quotationRouter = require("./routes/ServiceProviderRoutesrs/QuotationRT.js");
 app.use("/quotation", quotationRouter);

@@ -1,10 +1,11 @@
 let AddEvents = require("../../models/Event&CustomerModels/EventAdd");
 
-//-----POST-----
+//-----POST--------
 exports.postAddEvent = (req, res, next) => {
   const event_name = req.body.event_name;
   const org_name = req.body.org_name;
   const date_of_the_event = req.body.date_of_the_event;
+  const date_of_the_event_end = req.body.date_of_the_event_end;
   const location = req.body.location;
   const event_time = req.body.event_time;
   const days_occurs = Number(req.body.days_occurs);
@@ -14,12 +15,14 @@ exports.postAddEvent = (req, res, next) => {
   const cus_email = req.body.cus_email;
   const cus_con_number = Number(req.body.cus_con_number);
   const description = req.body.description;
+  const user_id = req.body.user_id;
   const checkboxOption = req.body.checkboxOption;
 
   const newEvent = new AddEvents({
     event_name,
     org_name,
     date_of_the_event,
+    date_of_the_event_end,
     location,
     event_time,
     days_occurs,
@@ -29,6 +32,7 @@ exports.postAddEvent = (req, res, next) => {
     cus_email,
     cus_con_number,
     description,
+    user_id,
     checkboxOption,
   });
 
@@ -44,7 +48,8 @@ exports.postAddEvent = (req, res, next) => {
 
 //------GET------------
 exports.getAllEvents = (req, res, next) => {
-  AddEvents.find()
+  let user_id = req.userId;
+  AddEvents.find({ user_id })
     .then((events) => {
       res.json(events);
     })

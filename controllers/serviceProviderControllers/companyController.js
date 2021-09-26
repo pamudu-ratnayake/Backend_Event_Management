@@ -9,7 +9,6 @@ exports.createCompany = async (req, res, next) => {
 	const details = req.body.details;
 	const file = req.body.file;
 
-	// Create new Company
 	const newCompany = new Company({
 		company_Id,
 		company_name,
@@ -18,7 +17,6 @@ exports.createCompany = async (req, res, next) => {
 		file,
 	});
 
-	// New Company save in Database
 	await newCompany
 		.save()
 		.then((company) => {
@@ -29,7 +27,6 @@ exports.createCompany = async (req, res, next) => {
 		});
 };
 
-// Get All Company
 exports.getAllCompanies = (req, res, next) => {
 	console.log(`<=== Get All Companies ====>`);
 	Company.find()
@@ -43,7 +40,6 @@ exports.getAllCompanies = (req, res, next) => {
 		});
 };
 
-// Update Servicer Provider
 exports.updateServiceProvider = async (req, res) => {
 	console.log(`<=== Update Servicer Provider ====>`);
 	let id = req.params.id;
@@ -69,7 +65,6 @@ exports.updateServiceProvider = async (req, res) => {
 		});
 };
 
-// Delete Servicer Provider
 exports.deleteServiceProvider = async (req, res) => {
 	console.log(`<=== Delete Servicer Provider ====>`);
 	let id = req.params.id;
@@ -84,7 +79,6 @@ exports.deleteServiceProvider = async (req, res) => {
 		});
 };
 
-// Get Servicer Provider
 exports.getServiceProvider = async (req, res) => {
 	console.log(`<=== Get Servicer Provider ====>`);
 
