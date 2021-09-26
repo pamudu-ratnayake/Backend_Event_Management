@@ -5,7 +5,7 @@ let QuotationController = require("../../controllers/serviceProviderControllers/
 router.post("/create", QuotationController.createQuotation);
 // Get all Quotation
 router.get("/", QuotationController.getAllQuotation);
-// Delete Comapny
+// Delete Quotation
 router.delete("/delete/:id", QuotationController.deleteQuotation);
 // Get  Quotation by Id
 router.get("/get/:id", QuotationController.getQuotation);
