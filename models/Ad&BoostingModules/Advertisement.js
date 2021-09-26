@@ -6,14 +6,11 @@ const AdvertisementSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-  // SPID: {
-  // type: String,
-  // required: true,
-  // },
-  // AID: {
-  // type: String,
-  // required: true,
-  // },
+  service_Provider_ID: {
+  type: String,
+  required: true,
+  },
+ 
   email_SP: {
     type: String,
     required: true,
