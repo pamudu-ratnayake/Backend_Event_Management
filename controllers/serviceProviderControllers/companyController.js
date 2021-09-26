@@ -89,7 +89,7 @@ exports.getServiceProvider = async (req, res) => {
 	console.log(`<=== Get Servicer Provider ====>`);
 
 	let id = req.params.id;
-
+	// Get company by ID
 	await Company.findById(id)
 		.then((company) => {
 			res.json(company);
