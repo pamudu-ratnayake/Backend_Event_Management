@@ -54,8 +54,8 @@ app.use("/sponsor", sponsorRouter);
 const consultingRouter = require("./routes/Consulting&SponsorsRoutes/consultingRt.js");
 app.use("/consulting", consultingRouter);
 
-const authRoutes = require("./routes/auth/userRT.js")
-app.use("/auth-user" , authRoutes);
+const authRoutes = require("./routes/auth/userRT.js");
+app.use("/auth-user", authRoutes);
 // Quotation Routes
 const quotationRouter = require("./routes/ServiceProviderRoutesrs/QuotationRT.js");
 app.use("/quotation", quotationRouter);

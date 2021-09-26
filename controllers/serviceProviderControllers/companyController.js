@@ -20,7 +20,6 @@ exports.createCompany = async (req, res, next) => {
 	await newCompany
 		.save()
 		.then((company) => {
-			console.log(company);
 			res.json(company);
 		})
 		.catch((err) => {
@@ -34,7 +33,6 @@ exports.getAllCompanies = (req, res, next) => {
 		.sort({ _id: -1 })
 		.limit(1)
 		.then((company) => {
-			console.log(company);
 			res.json(company);
 		})
 		.catch((err) => {
@@ -85,7 +83,7 @@ exports.getServiceProvider = async (req, res) => {
 	console.log(`<=== Get Servicer Provider ====>`);
 
 	let id = req.params.id;
-
+	// Get company by ID
 	await Company.findById(id)
 		.then((company) => {
 			res.json(company);
