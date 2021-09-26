@@ -10,6 +10,7 @@ exports.createCompany = async (req, res, next) => {
 	const details = req.body.details;
 	const file = req.body.file;
 
+	// Create Company
 	const newCompany = new Company({
 		service_provider_id,
 		company_Id,
@@ -29,6 +30,7 @@ exports.createCompany = async (req, res, next) => {
 		});
 };
 
+// Get All Companies
 exports.getAllCompanies = (req, res, next) => {
 	console.log(`<=== Get All Companies ====>`);
 	Company.find()
@@ -42,6 +44,7 @@ exports.getAllCompanies = (req, res, next) => {
 		});
 };
 
+// Update company
 exports.updateServiceProvider = async (req, res) => {
 	console.log(`<=== Update Servicer Provider ====>`);
 	let id = req.params.id;
