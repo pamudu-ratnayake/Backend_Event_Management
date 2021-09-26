@@ -3,6 +3,7 @@ let Company = require("../../models/serviceProviderModels/company");
 exports.createCompany = async (req, res, next) => {
 	console.log(`<=== Create Company  ====>`);
 	// Assigning value to variabales
+	const service_provider_id = req.body.service_provider_id;
 	const company_Id = req.body.company_Id;
 	const company_name = req.body.company_name;
 	const service_provider_type = req.body.service_provider_type;
@@ -10,6 +11,7 @@ exports.createCompany = async (req, res, next) => {
 	const file = req.body.file;
 
 	const newCompany = new Company({
+		service_provider_id,
 		company_Id,
 		company_name,
 		service_provider_type,
@@ -48,6 +50,7 @@ exports.updateServiceProvider = async (req, res) => {
 
 	const companyUpdate = {
 		id,
+		service_provider_id,
 		company_Id,
 		company_name,
 		service_provider_type,

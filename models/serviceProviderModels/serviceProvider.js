@@ -41,7 +41,7 @@ const serviceProviderSchema = new mongoose.Schema({
 });
 
 const ServiceProvider = mongoose.model(
-	"serviceProvider",
+	"ServiceProvider",
 	serviceProviderSchema
 );
 
