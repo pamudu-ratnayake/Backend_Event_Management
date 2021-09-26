@@ -5,6 +5,7 @@ exports.postAddEvent = (req, res, next) => {
   const event_name = req.body.event_name;
   const org_name = req.body.org_name;
   const date_of_the_event = req.body.date_of_the_event;
+  const date_of_the_event_end = req.body.date_of_the_event_end;
   const location = req.body.location;
   const event_time = req.body.event_time;
   const days_occurs = Number(req.body.days_occurs);
@@ -21,6 +22,7 @@ exports.postAddEvent = (req, res, next) => {
     event_name,
     org_name,
     date_of_the_event,
+    date_of_the_event_end,
     location,
     event_time,
     days_occurs,
