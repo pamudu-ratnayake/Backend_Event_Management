@@ -2,12 +2,12 @@ const consulting = require("../../models/Consulting&SponsorsModels/consultingMd"
 
 const consultingPost = (req, res, next) => {
   const issue = req.body.issue;
-  const eventID = req.body.eventID;
+  const eventObj = req.body.eventObj;
   const answers = req.body.answers;
 
   const newConsulting = new consulting({
     issue,
-    eventID,
+    eventObj,
     answers,
   });
 
@@ -32,13 +32,30 @@ const consultingsGet = (req, res, next) => {
     });
 };
 
+// const consultingUpdate = (req, res, next) => {
+//   let ID = req.params.id;
+//   const { answers } = req.body;
+
+//   const updateConsulting = {
+//     answers,
+//   };
+
+//   const update = consulting
+//     .findByIdAndUpdate(ID, { $push: req.body })
+//     .then(() => {
+//       res.status(200).send({ status: "User Updated", user: update });
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.satatus(500).send({ status: "Error with updating data" });
+//     });
+// };
+
 const consultingUpdate = (req, res, next) => {
   let ID = req.params.id;
-  const { issue, eventID, answers } = req.body;
+  const {  answers } = req.body;
 
   const updateConsulting = {
-    issue,
-    eventID,
     answers,
   };
 

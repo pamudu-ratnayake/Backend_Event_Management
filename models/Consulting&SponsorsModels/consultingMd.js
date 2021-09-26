@@ -5,12 +5,12 @@ const ConsultingSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-  eventID: {
-    type: String,
+  eventObj: {
+    type: Object,
     require: true,
   },
   answers: {
-    type: Array,
+    type: [],
     // required: true,
   },
 });
