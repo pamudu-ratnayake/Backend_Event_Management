@@ -71,6 +71,7 @@ exports.updateServiceProvider = async (req, res) => {
 		});
 };
 
+// Delete Company
 exports.deleteServiceProvider = async (req, res) => {
 	console.log(`<=== Delete Servicer Provider ====>`);
 	let id = req.params.id;
@@ -85,6 +86,7 @@ exports.deleteServiceProvider = async (req, res) => {
 		});
 };
 
+// Get Company by ID
 exports.getServiceProvider = async (req, res) => {
 	console.log(`<=== Get Servicer Provider ====>`);
 
