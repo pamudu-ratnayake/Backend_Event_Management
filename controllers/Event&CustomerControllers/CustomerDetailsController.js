@@ -1,4 +1,5 @@
 let Customers = require("../../models/Event&CustomerModels/CustomerDetails");
+let User = require("../../models/auth/user")
 
 //---post---
 exports.postCustomerDetails = (req, res, next) => {
@@ -11,8 +12,10 @@ exports.postCustomerDetails = (req, res, next) => {
   const cus_contact_no = req.body.cus_contact_no;
   const cus_email = req.body.cus_email;
   const cus_description = req.body.cus_description;
+  const prof_img = req.file.originalname;
+  const user_id = req.body.user_id;
 
-  const newCustomer = new newCustomer({
+  const newCustomer = new Customers({
     cus_userName,
     cus_FName,
     cus_LName,
@@ -22,9 +25,11 @@ exports.postCustomerDetails = (req, res, next) => {
     cus_contact_no,
     cus_email,
     cus_description,
+    prof_img,
+    user_id,
   });
 
-  newEvent
+  newCustomer
     .save()
     .then(() => {
       res.json("Customer Added");
@@ -37,6 +42,17 @@ exports.postCustomerDetails = (req, res, next) => {
 //----GET----
 exports.getCustomers = (req, res, next) => {
   Customers.find()
+    .then((customers) => {
+      res.json(customers);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+//----GET User Details----
+exports.getUser = (req, res, next) => {
+  User.find()
     .then((customers) => {
       res.json(customers);
     })
@@ -88,9 +104,9 @@ exports.deleteCustomer = async (req, res) => {
 
 //---------GET One Customer------------------
 exports.getOneCustomer = async (req, res) => {
-  let cus_id = req.params.cus_id;
+  let user_id = req.params.user_id;
 
-  await Customers.findById(cus_id)
+  await Customers.findOne({user_id})
     .then((customer) => {
       res.json(customer);
     })

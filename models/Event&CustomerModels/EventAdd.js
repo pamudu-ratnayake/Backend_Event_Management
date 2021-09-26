@@ -12,7 +12,11 @@ const eventAddSchema = new Schema({
     required: true,
   },
   date_of_the_event: {
-    type: String,
+    type: Date,
+    required: true,
+  },
+  date_of_the_event_end: {
+    type: Date,
     required: true,
   },
   location: {
@@ -54,6 +58,10 @@ const eventAddSchema = new Schema({
   checkboxOption: {
     type: Array,
     required: true,
+  },
+  user_id:{
+    type: String,
+    required:true,
   }
 });
 
