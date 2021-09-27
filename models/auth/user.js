@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const authUser = new Schema({
+    user_type:{
+        type:String,
+        required: true,
+    },
     firstName:{
         type:String,
         required: true,
@@ -19,7 +23,7 @@ const authUser = new Schema({
         type:String,
         required: true,
     },
-    type:{
+    service_type:{
         type:String,
         required: false,
     },

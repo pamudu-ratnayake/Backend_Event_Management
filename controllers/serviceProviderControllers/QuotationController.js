@@ -69,7 +69,7 @@ exports.getQuotation = async (req, res) => {
   let id = req.params.id;
 
   await Quotation.findById(id)
-    .populate()
+    .populate("event_id")
     .then((quotation) => {
       res.json(quotation);
     })
@@ -77,3 +77,4 @@ exports.getQuotation = async (req, res) => {
       console.log(err);
     });
 };
+ 

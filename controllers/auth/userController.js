@@ -30,7 +30,7 @@ const secret = process.env.JWT_SECRET;
   };
   
    const signup = async (req, res) => {
-    const { email, password, firstName, lastName } = req.body;
+    const { email, password, firstName, lastName, service_type, user_type } = req.body;
   
     try {
       const oldUser = await UserAuthModel.findOne({ email });
@@ -39,7 +39,7 @@ const secret = process.env.JWT_SECRET;
   
       const hashedPassword = await bcrypt.hash(password, 12);
   
-      const result = await UserAuthModel.create({ email, password: hashedPassword, firstName, lastName });
+      const result = await UserAuthModel.create({ email, password: hashedPassword, firstName, lastName, service_type, user_type });
   
       const token = jwt.sign( { email: result.email, id: result._id }, secret, { expiresIn: "1h" } );
   
