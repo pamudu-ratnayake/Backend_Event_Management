@@ -1,35 +1,31 @@
 const mongoose = require("mongoose");
 
 const SponsorSchema = new mongoose.Schema({
-  regNo: {
+  event_id: {
     type: String,
     require: true,
   },
-  companyName: {
+  sender_name: {
     type: String,
-    required: true,
-  },
-  sponsorType: {
-    type: String,
-    required: true,
-  },
-  SponsorPhoneNo: {
-    type: Number,
-    required: true,
+    require: true,
   },
   sponsorEmail: {
     type: String,
     required: true,
   },
-  sponsorAddress: {
+  companyName: {
     type: String,
     required: true,
   },
-  sponsorLogo: {
+  cus_email: {
+    type: String,
+    required: true,
+  },
+  reqDate: {
     type: String,
     required: true,
   },
 });
 
-const Sponsor = mongoose.model("SponsorData", SponsorSchema);
+const Sponsor = mongoose.model("RequestedSponsors", SponsorSchema);
 module.exports = Sponsor;

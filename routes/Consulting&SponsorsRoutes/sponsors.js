@@ -1,7 +1,21 @@
 const router = require("express").Router();
 const sponsorController = require("../../controllers/Consulting&SponsorsControllers/sponsorConroller");
 
-router.post("/addSponsors", sponsorController.sponsorPost);
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+  destination: (req, file, callback) =>  {
+    callback(null, "../../../../Event Management/Backend-Event-Management/public/uploads/");
+  },
+  filename: (req, file, callback) => {
+    callback(null, file.originalname)
+  }
+})
+
+const upload = multer({ storage: storage });
+
+//Routs
+router.post("/addSponsors",upload.single("file"), sponsorController.sponsorPost);
 
 router.get("/getSponsors", sponsorController.sponsorsGet);
 
