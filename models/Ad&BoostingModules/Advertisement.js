@@ -37,7 +37,7 @@ const AdvertisementSchema = new mongoose.Schema({
   },
   advertisement_Pic: {
     type: String,
-    required: ,
+    required: false,
   },
   boosting_Pack: {
     type: String,
