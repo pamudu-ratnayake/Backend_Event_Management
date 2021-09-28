@@ -62,6 +62,7 @@ const getUser = (req, res, next) => {
     });
 };
 
+
 module.exports = {
   login,
   signup,
