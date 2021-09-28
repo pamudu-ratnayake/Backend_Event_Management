@@ -1,5 +1,5 @@
 const router = require("express").Router();
-
+const auth = require("../../middleware/auth")
 const multer = require("multer");
 
 const storage = multer.diskStorage({
@@ -16,7 +16,7 @@ const upload = multer({ storage: storage });
 const Controller = require("../../controllers/Ad&BoostingControllers/Controller");
 
 //routes--------------
-router.post("/addadvertisement", Controller.addAdvertisement);
+router.post("/addadvertisement",auth, Controller.addAdvertisement);
 
 router.get("/get/:id", Controller.viewoneAdvertisement);
 
