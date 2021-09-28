@@ -3,7 +3,7 @@ const Advertisement = require("../../models/Ad&BoostingModules/Advertisement");
 //control class
 const addAdvertisement = (req, res, next) => {
   const  service_Provider_Name = req.body. service_Provider_Name;
-  // const SPID = req.body.SPID;
+  const service_Provider_ID = req.userId;
   // const AID = req.body.AID;
   const email_SP = req.body.email_SP;
   const contact_Number_SP = Number(req.body.contact_Number_SP);
@@ -18,7 +18,7 @@ const addAdvertisement = (req, res, next) => {
 
   const newAdvertisement = new Advertisement({
     service_Provider_Name,
-    // SPID,
+    service_Provider_ID,
     // AID,
     email_SP,
     contact_Number_SP,
