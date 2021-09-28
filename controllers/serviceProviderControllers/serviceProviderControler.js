@@ -4,6 +4,7 @@ exports.createServiceProvider = (req, res, next) => {
 	console.log(`<=== Create Service Provider ====>`);
 	// Assigning value to variabales
 	const servic_provider_Id = req.body.servic_provider_Id;
+	const user_id = req.body.user_id;
 	const nic_no = req.body.nic_no;
 	const first_name = req.body.first_name;
 	const last_name = req.body.last_name;
@@ -12,10 +13,11 @@ exports.createServiceProvider = (req, res, next) => {
 	const mobile = Number(req.body.mobile);
 	const telephone = Number(req.body.telephone);
 	const address = req.body.address;
-	const password = req.body.password;
+	const company_id = req.body.company_id;
 
 	const newServiceProvider = new ServiceProviderModel({
 		servic_provider_Id,
+		user_id,
 		nic_no,
 		first_name,
 		last_name,
@@ -24,7 +26,7 @@ exports.createServiceProvider = (req, res, next) => {
 		mobile,
 		telephone,
 		address,
-		password,
+		company_id,
 	});
 
 	newServiceProvider
@@ -53,6 +55,7 @@ exports.updateServiceProvider = async (req, res) => {
 	let id = req.params.id;
 	const {
 		servic_provider_Id,
+		user_id,
 		nic_no,
 		first_name,
 		last_name,
@@ -61,12 +64,13 @@ exports.updateServiceProvider = async (req, res) => {
 		mobile,
 		telephone,
 		address,
-		password,
+		company_id,
 	} = req.body;
 
 	const serviceProviderUpdate = {
 		id,
 		servic_provider_Id,
+		user_id,
 		nic_no,
 		first_name,
 		last_name,
@@ -75,7 +79,7 @@ exports.updateServiceProvider = async (req, res) => {
 		mobile,
 		telephone,
 		address,
-		password,
+		company_id,
 	};
 
 	const update = await ServiceProviderModel.findByIdAndUpdate(
