@@ -42,13 +42,12 @@ const customerDetailsSchema = new Schema({
   },
   prof_img: {
     type: String,
-    required: true,
+    required: false,
   },
-  user_id:{
+  user_id: {
     type: String,
     required: true,
-  }
-
+  },
 });
 
 const Customers = mongoose.model("Customers", customerDetailsSchema);
