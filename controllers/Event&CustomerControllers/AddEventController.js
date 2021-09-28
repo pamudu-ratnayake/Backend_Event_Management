@@ -1,6 +1,6 @@
 let AddEvents = require("../../models/Event&CustomerModels/EventAdd");
 
-//-----POST--------
+//-----POST-----------
 exports.postAddEvent = (req, res, next) => {
   const event_name = req.body.event_name;
   const org_name = req.body.org_name;
