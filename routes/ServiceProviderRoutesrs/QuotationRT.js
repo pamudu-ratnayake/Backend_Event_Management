@@ -10,4 +10,6 @@ router.delete("/delete/:id", QuotationController.deleteQuotation);
 // Get  Quotation by Id
 router.get("/get/:id", QuotationController.getQuotation);
 
+router.put("/update/status/:quotation_id", QuotationController.updateQuotation);
+
 module.exports = router;

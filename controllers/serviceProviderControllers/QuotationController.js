@@ -11,7 +11,7 @@ exports.createQuotation = async (req, res, next) => {
   const terms = req.body.terms;
   const approve = req.body.approve;
 
-  // Create new Quotation
+  // Create new Quotation---
   const newQuotation = new Quotation({
     event_id,
     provider_id,
@@ -77,4 +77,21 @@ exports.getQuotation = async (req, res) => {
       console.log(err);
     });
 };
- 
+
+exports.updateQuotation = async (req, res) => {
+  let quotation_id = req.params.quotation_id;
+  const { approve } = req.body;
+
+  const quotationUpdate = {
+    approve,
+  };
+
+  await Quotation.findByIdAndUpdate(quotation_id, quotationUpdate)
+    .then(() => {
+      res.status(200).send({ status: "Quotation Updated!" });
+    })
+    .catch((err) => {
+      res.status(500).send({ status: "Error! Cannot Update!" });
+      console.log(err.message);
+    });
+};
