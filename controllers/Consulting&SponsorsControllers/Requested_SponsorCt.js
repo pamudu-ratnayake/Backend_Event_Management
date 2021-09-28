@@ -10,7 +10,6 @@ const requestedSponsorPost = (req, res, next) => {
   const cus_email = req.body.cus_email;
   const reqDate = req.body.reqDate;
 
-
   const newRequestedSponsor = new requestedSponsor({
     event_id,
     sender_name,
@@ -31,15 +30,17 @@ const requestedSponsorPost = (req, res, next) => {
 };
 
 const requestedSponsorsGet = (req, res, next) => {
-    sponsor
+  requestedSponsor
       .find()
-      .then((sponsors) => {
-        res.json(sponsors);
+      .then((requestedSponsor) => {
+        res.json(requestedSponsor);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+  
 
   module.exports = {
     requestedSponsorPost,
