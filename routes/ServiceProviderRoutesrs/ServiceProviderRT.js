@@ -8,4 +8,5 @@ router.delete("/delete/:id", ServiceProviderController.deleteServiceProvider);
 router.get("/get/:id", ServiceProviderController.getServiceProvider);
 router.get("/getOne", ServiceProviderController.getAllServicerProviderOne);
 
+
 module.exports = router;
