@@ -21,5 +21,4 @@ router.put("/update-customer/:cus_id", Customers.updateCustomer);
 router.delete("/delet-customer/:cus_id", Customers.deleteCustomer);
 router.get("/getOneCustomer/:user_id", Customers.getOneCustomer);
 
-
 module.exports = router;
