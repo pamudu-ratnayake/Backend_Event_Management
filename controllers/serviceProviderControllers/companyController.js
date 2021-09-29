@@ -3,13 +3,16 @@ let Company = require("../../models/serviceProviderModels/company");
 exports.createCompany = async (req, res, next) => {
 	console.log(`<=== Create Company  ====>`);
 	// Assigning value to variabales
+	const service_provider_id = req.body.service_provider_id;
 	const company_Id = req.body.company_Id;
 	const company_name = req.body.company_name;
 	const service_provider_type = req.body.service_provider_type;
 	const details = req.body.details;
 	const file = req.body.file;
 
+	// Create Company
 	const newCompany = new Company({
+		service_provider_id,
 		company_Id,
 		company_name,
 		service_provider_type,
@@ -27,6 +30,7 @@ exports.createCompany = async (req, res, next) => {
 		});
 };
 
+// Get All Companies
 exports.getAllCompanies = (req, res, next) => {
 	console.log(`<=== Get All Companies ====>`);
 	Company.find()
@@ -40,15 +44,21 @@ exports.getAllCompanies = (req, res, next) => {
 		});
 };
 
-exports.updateServiceProvider = async (req, res) => {
-	console.log(`<=== Update Servicer Provider ====>`);
+// Update company
+exports.updateCompany = async (req, res) => {
+	console.log(`<=== Update Company ====>`);
 	let id = req.params.id;
-	const { company_Id, company_name, service_provider_type, details, file } =
-		req.body;
+	const {
+		service_provider_id,
+		company_name,
+		service_provider_type,
+		details,
+		file,
+	} = req.body;
 
 	const companyUpdate = {
 		id,
-		company_Id,
+		service_provider_id,
 		company_name,
 		service_provider_type,
 		details,
@@ -57,7 +67,7 @@ exports.updateServiceProvider = async (req, res) => {
 
 	const update = await Company.findByIdAndUpdate(id, companyUpdate)
 		.then(() => {
-			res.status(200).send({ status: "Service Provider Updated!" });
+			res.status(200).send({ status: "Company Updated!" });
 		})
 		.catch((err) => {
 			res.status(500).send({ status: "Error! Cannot Update!" });
@@ -65,13 +75,14 @@ exports.updateServiceProvider = async (req, res) => {
 		});
 };
 
-exports.deleteServiceProvider = async (req, res) => {
-	console.log(`<=== Delete Servicer Provider ====>`);
+// Delete Company
+exports.deleteCompany = async (req, res) => {
+	console.log(`<=== Delete Company ====>`);
 	let id = req.params.id;
 
 	await Company.findByIdAndDelete(id)
 		.then(() => {
-			res.status(200).send({ status: "Service Provider Deleted!" });
+			res.status(200).send({ status: "Company Deleted!" });
 		})
 		.catch((err) => {
 			res.status(500).send({ status: "Error! Cannot Delete!" });
@@ -79,8 +90,9 @@ exports.deleteServiceProvider = async (req, res) => {
 		});
 };
 
-exports.getServiceProvider = async (req, res) => {
-	console.log(`<=== Get Servicer Provider ====>`);
+// Get Company by ID
+exports.getCompany = async (req, res) => {
+	console.log(`<=== Get Company ====>`);
 
 	let id = req.params.id;
 	// Get company by ID
