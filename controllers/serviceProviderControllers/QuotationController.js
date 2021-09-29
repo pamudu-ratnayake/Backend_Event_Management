@@ -38,7 +38,7 @@ exports.getAllQuotation = (req, res, next) => {
   console.log(`<=== Get All Quotation ====>`);
   let event_id = req.params.event_id;
   Quotation.find({ event_id: { $in: event_id }, approve: { $in: false } })
-    .populate("event_id")
+    .populate("provider_id")
     .then((quotation) => {
       res.json(quotation);
     })
@@ -52,7 +52,7 @@ exports.getAcceptedQuotation = (req, res, next) => {
   console.log(`<=== Get Accepted Quotation ====>`);
   let event_id = req.params.event_id;
   Quotation.find({ event_id: { $in: event_id }, approve: { $in: true } })
-    .populate("event_id")
+    .populate("provider_id")
     .then((quotation) => {
       res.json(quotation);
     })
@@ -83,7 +83,7 @@ exports.getQuotation = async (req, res) => {
   let id = req.params.id;
 
   await Quotation.findById(id)
-    .populate("event_id")
+    .populate("provider_id")
     .then((quotation) => {
       res.json(quotation);
     })
