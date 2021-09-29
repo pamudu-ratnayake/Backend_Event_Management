@@ -29,25 +29,25 @@ exports.createServiceProvider = (req, res, next) => {
 		company_id,
 	});
 
-  newServiceProvider
-    .save()
-    .then(() => {
-      res.json(" Service Provider Created ");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+	newServiceProvider
+		.save()
+		.then(() => {
+			res.json(" Service Provider Created ");
+		})
+		.catch((err) => {
+			console.log(err);
+		});
 };
 
 exports.getAllServicerProviders = (req, res, next) => {
-  console.log(`<=== Get All Servicer Providers ====>`);
-  ServiceProviderModel.find()
-    .then((servicerProviders) => {
-      res.json(servicerProviders);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+	console.log(`<=== Get All Servicer Providers ====>`);
+	ServiceProviderModel.find()
+		.then((servicerProviders) => {
+			res.json(servicerProviders);
+		})
+		.catch((err) => {
+			console.log(err);
+		});
 };
 
 exports.updateServiceProvider = async (req, res) => {
@@ -82,53 +82,72 @@ exports.updateServiceProvider = async (req, res) => {
 		company_id,
 	};
 
-  const update = await ServiceProviderModel.findByIdAndUpdate(id, serviceProviderUpdate)
-    .then(() => {
-      res.status(200).send({ status: "Service Provider Updated!" });
-    })
-    .catch((err) => {
-      res.status(500).send({ status: "Error! Cannot Update!" });
-      console.log(err.message);
-    });
+	const update = await ServiceProviderModel.findByIdAndUpdate(
+		id,
+		serviceProviderUpdate
+	)
+		.then(() => {
+			res.status(200).send({ status: "Service Provider Updated!" });
+		})
+		.catch((err) => {
+			res.status(500).send({ status: "Error! Cannot Update!" });
+			console.log(err.message);
+		});
 };
 
 exports.deleteServiceProvider = async (req, res) => {
-  console.log(`<=== Delete Servicer Provider ====>`);
-  let id = req.params.id;
+	console.log(`<=== Delete Servicer Provider ====>`);
+	let id = req.params.id;
 
-  await ServiceProviderModel.findByIdAndDelete(id)
-    .then(() => {
-      res.status(200).send({ status: "Service Provider Deleted!" });
-    })
-    .catch((err) => {
-      res.status(500).send({ status: "Error! Cannot Delete!" });
-      console.log(err.message);
-    });
+	await ServiceProviderModel.findByIdAndDelete(id)
+		.then(() => {
+			res.status(200).send({ status: "Service Provider Deleted!" });
+		})
+		.catch((err) => {
+			res.status(500).send({ status: "Error! Cannot Delete!" });
+			console.log(err.message);
+		});
 };
 
 exports.getServiceProvider = async (req, res) => {
-  console.log(`<=== Get Servicer Provider ====>`);
+	console.log(`<=== Get Servicer Provider ====>`);
 
-  let id = req.params.id;
+	let id = req.params.id;
 
-  await ServiceProviderModel.findById(id)
-    .then((serviceProvider) => {
-      res.json(serviceProvider);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+	await ServiceProviderModel.findById(id)
+		.then((serviceProvider) => {
+			res.json(serviceProvider);
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+};
+
+exports.getServiceProviderByUserId = async (req, res) => {
+	console.log(`<=== Get Servicer Provider By UserID ====>`);
+
+	let id = req.params.id;
+
+	await ServiceProviderModel.findOne({
+		user_id: id,
+	})
+		.then((serviceProvider) => {
+			res.json(serviceProvider);
+		})
+		.catch((err) => {
+			console.log(err);
+		});
 };
 
 exports.getAllServicerProviderOne = (req, res, next) => {
-  console.log(`<=== Get All Servicer Providers ====>`);
-  ServiceProviderModel.find()
-    .sort({ _id: -1 })
-    .limit(1)
-    .then((serviceProvider) => {
-      res.json(serviceProvider);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+	console.log(`<=== Get All Servicer Providers ====>`);
+	ServiceProviderModel.find()
+		.sort({ _id: -1 })
+		.limit(1)
+		.then((serviceProvider) => {
+			res.json(serviceProvider);
+		})
+		.catch((err) => {
+			console.log(err);
+		});
 };

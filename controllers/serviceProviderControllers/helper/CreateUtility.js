@@ -1,14 +1,15 @@
 const Company = require("../../../models/serviceProviderModels/company");
-const ServiceProviderModel = require("../../../models/serviceProviderModels");
+const ServiceProviderModel = require("../../../models/serviceProviderModels/serviceProvider");
 
-const createUtility = () => {
-	console.log("<====== Create Utility");
-	if (req.body.user_type == "service provider") {
+class CreateUtility {
+	async createUtilities(result, reqBody) {
+		console.log("<====== Create Utility =============>");
+
 		let dbUser = await ServiceProviderModel.find().sort({ _id: -1 }).limit(1);
-		console.log("dbUser : ", dbUser);
+
 		let userCodeString = "SP#";
 
-		if (dbUser.length !== 0) {
+		if (dbUser && dbUser.length !== 0) {
 			let userCode = dbUser[0].servic_provider_Id; // Assinging student code to new variable
 
 			let userCodeInt = Number(userCode.slice(3, 11)); // Convert string student code to Number
@@ -28,10 +29,10 @@ const createUtility = () => {
 			servic_provider_Id: userCodeString,
 			user_id: result._id,
 			nic_no: null,
-			first_name: firstName,
-			last_name: lastName,
+			first_name: reqBody.firstName,
+			last_name: reqBody.lastName,
 			user_name: "",
-			email: email,
+			email: reqBody.email,
 			mobile: "",
 			telephone: null,
 			address: "",
@@ -39,24 +40,21 @@ const createUtility = () => {
 		});
 
 		const newComany = new Company({
-			service_provider_type: req.body.service_type,
+			service_provider_type: reqBody.service_type,
 		});
 
-		await newComany
+		const dbCompany = await newComany.save();
+
+		newServiceProvider.company_id = dbCompany._id;
+		newServiceProvider
 			.save()
 			.then(() => {
-				res.json(" Company Created ");
+				console.log(" Service Provider Created ");
 			})
-			.then((company) => {
-				newServiceProvider.company_id = company._id;
-				newServiceProvider.save().then(() => {
-					res.json(" Service Provider Created ");
-				});
-			})
-			.catch((err) => {
-				console.log(err);
+			.catch((error) => {
+				console.log(error);
 			});
 	}
-};
+}
 
-module.exports = createUtility;
+module.exports = new CreateUtility();
