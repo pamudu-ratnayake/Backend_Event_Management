@@ -13,5 +13,4 @@ router.get(
 );
 router.put("/review-update/:id", ServiceProviderController.updateReview);
 
-
 module.exports = router;
