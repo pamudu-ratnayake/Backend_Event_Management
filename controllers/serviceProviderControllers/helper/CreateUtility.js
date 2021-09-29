@@ -37,6 +37,7 @@ class CreateUtility {
 			telephone: null,
 			address: "",
 			company_id: null,
+			service_type: reqBody.service_type,
 		});
 
 		const newComany = new Company({
