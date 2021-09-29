@@ -48,13 +48,17 @@ exports.getAllCompanies = (req, res, next) => {
 exports.updateCompany = async (req, res) => {
 	console.log(`<=== Update Company ====>`);
 	let id = req.params.id;
-	const { company_Id, company_name, service_provider_type, details, file } =
-		req.body;
+	const {
+		service_provider_id,
+		company_name,
+		service_provider_type,
+		details,
+		file,
+	} = req.body;
 
 	const companyUpdate = {
 		id,
 		service_provider_id,
-		company_Id,
 		company_name,
 		service_provider_type,
 		details,
