@@ -2,11 +2,12 @@ const mongoose = require("mongoose");
 
 const quotationSchema = new mongoose.Schema({
   event_id: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Events",
+    type: String,
+    // ref: "Events",
   },
   provider_id: {
-    type: "String",
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "ServiceProvider",
   },
   date_from: {
     type: String,
