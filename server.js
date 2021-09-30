@@ -14,16 +14,16 @@ app.use(bodyParser.json());
 const URL = process.env.MONGODB_URL;
 
 mongoose.connect(URL, {
-	useCreateIndex: true,
-	useNewUrlParser: true,
-	useUnifiedTopology: true,
-	useFindAndModify: false,
+  useCreateIndex: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
 });
 
 const connection = mongoose.connection;
 connection.once("open", () => {
-	console.log("        <=== Database connected ! ====>");
-	console.log(`<=== Running on URL: http://localhost:${PORT} ====>`);
+  console.log("        <=== Database connected ! ====>");
+  console.log(`<=== Running on URL: http://localhost:${PORT} ====>`);
 });
 
 const AdvertisementRouter = require("./routes/Ad&BoostingRouters/Advertisements.js");
@@ -31,7 +31,7 @@ const AdvertisementRouter = require("./routes/Ad&BoostingRouters/Advertisements.
 app.use("/advertisement", AdvertisementRouter);
 
 app.listen(PORT, () => {
-	console.log(`<=== Server is up and running on port ${PORT} ====>`);
+  console.log(`<=== Server is up and running on port ${PORT} ====>`);
 });
 
 //events
@@ -57,8 +57,8 @@ app.use("/requestedSponsor", RequestedSponsorRouter);
 const consultingRouter = require("./routes/Consulting&SponsorsRoutes/consultingRt.js");
 app.use("/consulting", consultingRouter);
 
-const authRoutes = require("./routes/auth/userRT.js")
-app.use("/auth-user" , authRoutes);
+const authRoutes = require("./routes/auth/userRT.js");
+app.use("/auth-user", authRoutes);
 // Quotation Routes
 const quotationRouter = require("./routes/ServiceProviderRoutesrs/QuotationRT.js");
 app.use("/quotation", quotationRouter);

@@ -8,7 +8,7 @@ const requestedSponsorPost = (req, res, next) => {
   const sponsorEmail = req.body.sponsorEmail;
   const companyName = req.body.companyName;
   const cus_email = req.body.cus_email;
-  const reqDate = req.body.reqDate;
+  const rqst = req.body.rqst;
 
   const newRequestedSponsor = new requestedSponsor({
     event_id,
@@ -16,7 +16,7 @@ const requestedSponsorPost = (req, res, next) => {
     sponsorEmail,
     companyName,
     cus_email,
-    reqDate
+    rqst
   });
 
   newRequestedSponsor
@@ -40,9 +40,20 @@ const requestedSponsorsGet = (req, res, next) => {
       });
   };
 
-  
+  const requestedSponsorsByEventIdGet = (req, res, next) => {
+  let e_ID = req.params.event_id;
+
+  const reqSponsorInfor = requestedSponsor.findOne(e_ID)
+  .then((reqSponsorData) => {
+    res.json(reqSponsorData).status(200).send({status: "User fetched", user: reqSponsorInfor})
+  }).catch(() => {
+    console.log(err.message);
+    res.status(500).send({status: "Error with get user", error: err.message})
+  })
+};
 
   module.exports = {
     requestedSponsorPost,
     requestedSponsorsGet,
+    requestedSponsorsByEventIdGet
   };

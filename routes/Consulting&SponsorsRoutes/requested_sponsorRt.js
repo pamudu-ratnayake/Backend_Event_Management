@@ -5,4 +5,6 @@ router.post("/addRequestedSponsors", requestedSponsorController.requestedSponsor
 
 router.get("/getRequestedSponsors", requestedSponsorController.requestedSponsorsGet);
 
+router.get("/getRequestedSponsorsBy/:id", requestedSponsorController.requestedSponsorsByEventIdGet);
+
 module.exports = router;

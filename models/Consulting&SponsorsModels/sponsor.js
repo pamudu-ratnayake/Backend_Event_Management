@@ -27,7 +27,7 @@ const SponsorSchema = new mongoose.Schema({
   },
   sponsorLogo: {
     type: String,
-    required: true,
+    required: false,
   },
 });
 

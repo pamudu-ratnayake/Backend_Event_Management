@@ -3,27 +3,27 @@ const mongoose = require("mongoose");
 const SponsorSchema = new mongoose.Schema({
   event_id: {
     type: String,
-    require: true,
+    // require: false,
   },
   sender_name: {
     type: String,
-    require: true,
+    // require: false,
   },
   sponsorEmail: {
     type: String,
-    required: true,
+    // required: false,
   },
   companyName: {
     type: String,
-    required: true,
+    // required: false,
   },
   cus_email: {
     type: String,
-    required: true,
+    // required: false,
   },
-  reqDate: {
+  rqst: {
     type: String,
-    required: true,
+    // required: false,
   },
 });
 
