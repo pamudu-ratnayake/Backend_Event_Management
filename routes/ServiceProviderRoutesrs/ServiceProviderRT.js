@@ -11,7 +11,7 @@ router.get(
 	"/getByUser/:id",
 	ServiceProviderController.getServiceProviderByUserId
 );
-router.put("/review-update/:id", ServiceProviderController.updateReview);
+router.post("/review-update/:id", ServiceProviderController.updateReview);
 
 
 module.exports = router;

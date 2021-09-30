@@ -137,15 +137,11 @@ exports.getAllServicerProviderOne = (req, res, next) => {
 };
 
 exports.updateReview = async (req, res) => {
-  console.log(`<=== Update Servicer Provider ====>`);
+  console.log(`<=== Update Servicer Provider Review ====>`);
   let id = req.params.id;
-  const { service_type } = req.body;
+  const review_rate = req.body.review_rate;
 
-  const serviceProviderUpdate = {
-    service_type,
-  };
-
-  const update = await ServiceProviderModel.findByIdAndUpdate(id, serviceProviderUpdate)
+  const update = await ServiceProviderModel.findByIdAndUpdate(id, {$push:{review_rate: review_rate}})
     .then(() => {
       res.status(200).send({ status: "Service Provider Rating Updated!" });
     })
