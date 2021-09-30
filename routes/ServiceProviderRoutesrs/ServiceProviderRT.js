@@ -7,5 +7,11 @@ router.put("/update/:id", ServiceProviderController.updateServiceProvider);
 router.delete("/delete/:id", ServiceProviderController.deleteServiceProvider);
 router.get("/get/:id", ServiceProviderController.getServiceProvider);
 router.get("/getOne", ServiceProviderController.getAllServicerProviderOne);
+router.get(
+	"/getByUser/:id",
+	ServiceProviderController.getServiceProviderByUserId
+);
+router.put("/review-update/:id", ServiceProviderController.updateReview);
+
 
 module.exports = router;

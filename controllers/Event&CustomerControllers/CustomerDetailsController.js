@@ -1,7 +1,7 @@
 let Customers = require("../../models/Event&CustomerModels/CustomerDetails");
 let User = require("../../models/auth/user")
 
-//---post---
+//---post-----------
 exports.postCustomerDetails = (req, res, next) => {
   const cus_userName = req.body.cus_userName;
   const cus_FName = req.body.cus_FName;
@@ -12,7 +12,7 @@ exports.postCustomerDetails = (req, res, next) => {
   const cus_contact_no = req.body.cus_contact_no;
   const cus_email = req.body.cus_email;
   const cus_description = req.body.cus_description;
-  const prof_img = req.file.originalname;
+  const prof_img = "http://localhost:8080/public/uploads/" + req.file.originalname;
   const user_id = req.body.user_id;
 
   const newCustomer = new Customers({
