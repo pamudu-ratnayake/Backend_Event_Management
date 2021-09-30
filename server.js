@@ -10,8 +10,7 @@ const PORT = process.env.PORT || 8080;
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-// app.get("/public", express.static("public"));
+app.use("/public/uploads", express.static(path.join(__dirname, "public/uploads")));
 
 //DB URL
 const URL = process.env.MONGODB_URL;
