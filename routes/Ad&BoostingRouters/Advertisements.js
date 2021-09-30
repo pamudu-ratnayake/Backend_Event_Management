@@ -4,7 +4,7 @@ const multer = require("multer");
 
 const storage = multer.diskStorage({
   destination: (req, file, callback) =>  {
-    callback(null, "../../../../Event Management/Backend-Event-Management/public/uploads/");
+    callback(null, "./public/uploads");
   },
   filename: (req, file, callback) => {
     callback(null, file.originalname)
@@ -16,13 +16,15 @@ const upload = multer({ storage: storage });
 const Controller = require("../../controllers/Ad&BoostingControllers/Controller");
 
 //routes--------------
-router.post("/addadvertisement",auth, Controller.addAdvertisement);
+router.post("/addadvertisement",auth,upload.single("file"), Controller.addAdvertisement);
 
 router.get("/get/:id", Controller.viewoneAdvertisement);
 
 router.put("/boostadvertisement/:id", Controller.boostAdvertisement);
 
 router.get("/list", Controller.viewAdvertisement);
+
+router.get("/provider-adds",auth, Controller.viewUserAdvertisement);
 
 router.put("/updateadvertisement/:id", Controller.updateAdvertisement);
 

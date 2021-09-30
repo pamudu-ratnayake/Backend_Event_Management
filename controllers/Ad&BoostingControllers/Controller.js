@@ -1,6 +1,8 @@
 const Advertisement = require("../../models/Ad&BoostingModules/Advertisement");
 
 //control class
+
+//-----POST--------
 const addAdvertisement = (req, res, next) => {
   const  service_Provider_Name = req.body. service_Provider_Name;
   const service_Provider_ID = req.userId;
@@ -11,15 +13,14 @@ const addAdvertisement = (req, res, next) => {
   const advertisement_Duration = req.body.advertisement_Duration;
   const advertisement_title = req.body.advertisement_title;
   const advertisement_Des = req.body.advertisement_Des;
-  const advertisement_Pic = req.body.advertisement_Pic;
+  const advertisement_Pic = req.file.originalname;
   const boosting_Pack = req.body.boosting_Pack;
-
+  const total = req.body.total;
   // const PType = req.body.PType;
 
   const newAdvertisement = new Advertisement({
     service_Provider_Name,
     service_Provider_ID,
-    // AID,
     email_SP,
     contact_Number_SP,
     service_Type,
@@ -27,8 +28,8 @@ const addAdvertisement = (req, res, next) => {
     advertisement_title,
     advertisement_Des,
     advertisement_Pic,
-    boosting_Pack
-    // PType,
+    boosting_Pack,
+    total
   });
 
   newAdvertisement
@@ -41,6 +42,7 @@ const addAdvertisement = (req, res, next) => {
     });
 };
 
+//------GET------------
 const viewAdvertisement = (req, res, next) => {
   Advertisement.find()
     .then((Advertisement) => {
@@ -51,6 +53,7 @@ const viewAdvertisement = (req, res, next) => {
     });
 };
 
+//--------update-----------
 const updateAdvertisement = async (req, res, next) => {
   const advertisementid = req.params.id;
   const { service_Provider_Name, email_SP, contact_Number_SP, service_Type, advertisement_Duration,advertisement_title,advertisement_Des,advertisement_Pic} =
@@ -68,7 +71,7 @@ const updateAdvertisement = async (req, res, next) => {
     advertisement_Des,
     advertisement_Pic,
     boosting_Pack
-    // PType,
+   
   };
 
   const update = await Advertisement.findByIdAndUpdate(
@@ -83,6 +86,7 @@ const updateAdvertisement = async (req, res, next) => {
     });
 };
 
+//--------delete-----------
 const deleteAdvertisement = async(req, res, next) => {
   let advertisementid = req.params.id;
 
@@ -96,6 +100,20 @@ const deleteAdvertisement = async(req, res, next) => {
     });
 };
 
+
+//--------view each user advertisement -----------
+const viewUserAdvertisement = (req, res, next) => {
+  let service_Provider_ID = req.userId;
+  Advertisement.find({ service_Provider_ID })
+    .then((Advertisement) => {
+      res.json(Advertisement);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+//--------view advertisement -----------
 const viewoneAdvertisement = (req, res, next) => {
   let advertisementid = req.params.id; 
   Advertisement.findById(advertisementid)
@@ -107,13 +125,16 @@ const viewoneAdvertisement = (req, res, next) => {
     });
 };
 
+
+//--------boost advertisement-----------
 const boostAdvertisement = async (req, res, next) => {
   const advertisementid = req.params.id;
-  const {boosting_Pack } =
+  const {boosting_Pack,total } =
     req.body;
 
 const boostAdd = {
-  boosting_Pack
+  boosting_Pack,
+  total
   
 };
 
@@ -135,5 +156,6 @@ module.exports = {
   updateAdvertisement,
   deleteAdvertisement,
   viewoneAdvertisement,
+  viewUserAdvertisement,
   boostAdvertisement
 };

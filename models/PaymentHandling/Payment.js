@@ -2,25 +2,43 @@ const mongoose = require("mongoose");
 
 //Advertiesment model
 const PaymentSchema = new mongoose.Schema({
-  Name_On_Card: {
+
+  type_id:{
     type: String,
-    require: true,
   },
-  Card_Number: {
-  type: Number,
-  required: true,
+
+  user_email: {
+    type: String,
   },
- 
-  CCV: {
-    type: Number,
-    required: true,
+
+  user_name: {
+    type: String,
   },
-  Expiry_Date: {
-    type: Number,
-    required: true,
+
+  payment_date:{
+    type: String,
   },
-  
+
+  date_event_occur:{
+    type: String,
+  },
+
+  user_id:{
+    type: String,
+  },
+
+  type_name:{
+    type: String,
+  },
+
+  total:{
+    type: String,
+  },
+
+  type:{
+    type: String,
+  },
 });
 
-const Payment = mongoose.model("Advertisement Details", PaymentSchema);
+const Payment = mongoose.model("Payement Details", PaymentSchema);
 module.exports = Payment;

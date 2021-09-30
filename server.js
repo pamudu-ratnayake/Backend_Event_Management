@@ -29,7 +29,11 @@ connection.once("open", () => {
 
 const AdvertisementRouter = require("./routes/Ad&BoostingRouters/Advertisements.js");
 
+const PaymentRouter = require("./routes/PaymentHandling/PaymentRT.js")
+
 app.use("/advertisement", AdvertisementRouter);
+
+app.use("/payment",PaymentRouter);
 
 app.listen(PORT, () => {
 	console.log(`<=== Server is up and running on port ${PORT} ====>`);

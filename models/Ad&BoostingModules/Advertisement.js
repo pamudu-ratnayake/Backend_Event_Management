@@ -35,6 +35,7 @@ const AdvertisementSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  
   advertisement_Pic: {
     type: String,
     required: false,
@@ -42,11 +43,14 @@ const AdvertisementSchema = new mongoose.Schema({
   boosting_Pack: {
     type: String,
     required: false,
-  }
-  // PType: {
-  //   type: String,
-  //   required: true,
-  // },
+  },
+
+  total : {
+    type: Number,
+    required: false,
+  },
+
+
 });
 
 const Advertisement = mongoose.model("Advertisement Details", AdvertisementSchema);

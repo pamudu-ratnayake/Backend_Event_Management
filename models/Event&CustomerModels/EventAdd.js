@@ -67,6 +67,10 @@ const eventAddSchema = new Schema({
     type: String,
     required: false,
   },
+  total : {
+    type: Number,
+    required: false,
+  },
   user_id:{
     type: String,
     required:true,

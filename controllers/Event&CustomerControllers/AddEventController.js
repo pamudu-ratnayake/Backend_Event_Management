@@ -14,6 +14,7 @@ exports.postAddEvent = (req, res, next) => {
   const org_nic = req.body.org_nic;
   const boosting_event = req.body.boosting_event;
   const boosting_Purpose = req.body.boosting_Purpose;
+  const total = req.body.total;
   const cus_email = req.body.cus_email;
   const cus_con_number = Number(req.body.cus_con_number);
   const description = req.body.description;
@@ -37,6 +38,7 @@ exports.postAddEvent = (req, res, next) => {
     user_id,
     checkboxOption,
     boosting_event,
+    total,
     boosting_Purpose,
   });
 
@@ -118,13 +120,15 @@ exports.getOneEvent = async (req, res) => {
     });
 };
 
+//--------boost event-----------
 exports.boostEvent = async (req, res) => {
   let event_id = req.params.event_id;
-  const { boosting_event, boosting_Purpose} = req.body;
+  const { boosting_event, total,boosting_Purpose} = req.body;
 
   const boostingEvent = {
     boosting_event,
-    boosting_Purpose
+    boosting_Purpose,
+    total
 
   };
 
