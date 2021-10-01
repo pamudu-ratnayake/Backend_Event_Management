@@ -3,7 +3,10 @@ const mongoose = require("mongoose");
 const companySchema = new mongoose.Schema({
 	company_Id: {
 		type: String,
-		// required: true,
+	},
+	service_provider_id: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "ServiceProvider",
 	},
 	company_name: {
 		type: String,
@@ -22,6 +25,6 @@ const companySchema = new mongoose.Schema({
 	},
 });
 
-const Company = mongoose.model("company", companySchema);
+const Company = mongoose.model("Company", companySchema);
 
 module.exports = Company;

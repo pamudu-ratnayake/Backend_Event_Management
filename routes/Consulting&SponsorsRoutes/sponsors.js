@@ -1,14 +1,30 @@
 const router = require("express").Router();
 const sponsorController = require("../../controllers/Consulting&SponsorsControllers/sponsorConroller");
 
-router.post("/addSponsors", sponsorController.sponsorPost);
+const auth = require("../../middleware/auth");
 
-router.get("/getSponsors", sponsorController.sponsorsGet);
+const multer = require("multer");
 
-router.put("/updateSponsor/:id", sponsorController.sponsorUpdate);
+const storage = multer.diskStorage({
+  destination: (req, file, callback) =>  {
+    callback(null, "./public/uploads/");
+  },
+  filename: (req, file, callback) => {
+    callback(null, file.originalname)
+  }
+})
 
-router.delete("/deleteSponsor/:id", sponsorController.sponsorDelete);
+const upload = multer({ storage: storage });
 
-router.get("/getSponsor/:id", sponsorController.sponsorGet);
+//Routs
+router.post("/addSponsors", auth, upload.single("file"), sponsorController.sponsorPost);
+
+router.get("/getSponsors", auth, sponsorController.sponsorsGet);
+
+router.put("/updateSponsor/:id", auth, sponsorController.sponsorUpdate);
+
+router.delete("/deleteSponsor/:id", auth, sponsorController.sponsorDelete);
+
+router.get("/getSponsor/:id", auth, sponsorController.sponsorGet);
 
 module.exports = router;
