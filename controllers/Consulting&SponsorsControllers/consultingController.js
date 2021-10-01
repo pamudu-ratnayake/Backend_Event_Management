@@ -138,7 +138,6 @@ const answerUpdate = async (req, res, next) => {
 
 //Get Issue By ID
 
-
 const getByeventID = (req, res, next) => {
   let event_id = req.eventObj._id;
 
