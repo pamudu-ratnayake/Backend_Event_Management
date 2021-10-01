@@ -24,7 +24,11 @@ const SponsorSchema = new mongoose.Schema({
   sponsorAddress: {
     type: String,
     required: true,
-  }
+  },
+  sponsorLogo: {
+    type: String,
+    required: false,
+  },
 });
 
 const Sponsor = mongoose.model("SponsorData", SponsorSchema);

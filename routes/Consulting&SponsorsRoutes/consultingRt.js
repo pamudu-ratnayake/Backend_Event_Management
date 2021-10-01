@@ -1,14 +1,20 @@
 const router = require("express").Router();
-const sponsorController = require("../../controllers/Consulting&SponsorsControllers/consultingController");
+const consultingController = require("../../controllers/Consulting&SponsorsControllers/consultingController");
 
-router.post("/addIssue", sponsorController.consultingPost);
+const auth = require("../../middleware/auth");
 
-router.get("/getIssues", sponsorController.consultingsGet);
+router.post("/addIssue", auth, consultingController.consultingPost);
 
-router.put("/updateIssue/:id", sponsorController.consultingUpdate);
+router.get("/getIssues", auth, consultingController.consultingsGet);
 
-router.delete("/deleteIssue/:id", sponsorController.consultingDelete);
+// router.put("/updateIssue/:id", auth, consultingController.consultingUpdate);
 
-router.get("/getIssue/:id", sponsorController.consultingGet);
+router.delete("/deleteIssue/:id", auth, consultingController.consultingDelete);
+
+router.get("/getIssue/:id", auth, consultingController.consultingGet);
+
+router.post("/addAnswer/:id", auth, consultingController.answerUpdate);
+
+router.get("/getByevent/:id", auth, consultingController.getByeventID);
 
 module.exports = router;
