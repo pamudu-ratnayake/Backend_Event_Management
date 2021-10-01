@@ -62,7 +62,7 @@ exports.getAcceptedQuotation = (req, res, next) => {
 		});
 };
 
-// Get Quotation By provider Id
+// Get Quotation By provider Id ppulate event
 exports.getQuotationByProvider = (req, res, next) => {
 	console.log(`<=== Get Quotation By Provider Id ====>`);
 
