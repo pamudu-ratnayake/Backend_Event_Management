@@ -16,6 +16,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+
 //routes
 router.post("/addcustomer", auth, upload.single("file"), Customers.postCustomerDetails);
 router.get("/get-customers", auth, Customers.getCustomers);
