@@ -13,4 +13,5 @@ router.put("/updateadvertisement/:id", Controller.updateAdvertisement);
 
 router.delete("/deleteadvertisement/:id", Controller.deleteAdvertisement);
 
+
 module.exports = router;

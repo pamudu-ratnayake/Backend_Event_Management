@@ -123,3 +123,16 @@ exports.getOneEvent = async (req, res) => {
       console.log(err);
     });
 };
+
+//-------Get Top Events-------
+exports.getTopEvents = (req, res, next) => {
+  console.log(`<=== Get Top Events ====>`);
+  let sp_type = req.params.sp_type;
+  AddEvents.find({checkboxOption: {$all:[sp_type]}, boosting_Purpose: {$exists:true} })
+    .then((events) => {
+      res.json(events);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};

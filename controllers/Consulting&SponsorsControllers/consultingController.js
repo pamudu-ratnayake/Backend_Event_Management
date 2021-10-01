@@ -74,7 +74,6 @@ const consultingsGet = (req, res, next) => {
 //     });
 // };
 
-
 //Delete issue
 
 const consultingDelete = (req, res, next) => {
@@ -86,9 +85,7 @@ const consultingDelete = (req, res, next) => {
     })
     .catch((err) => {
       console.log(err.message);
-      res
-        .status(500)
-        .send({ status: "Error with delete issue", erroe: err.message });
+      res.status(500).send({ status: "Error with delete issue", erroe: err.message });
     });
 };
 
@@ -100,19 +97,13 @@ const consultingGet = (req, res, next) => {
   const consultingInfor = consulting
     .findById(ID)
     .then((consultingData) => {
-      res
-        .json(consultingData)
-        .status(200)
-        .send({ status: "Issue fetched", user: consultingInfor });
+      res.json(consultingData).status(200).send({ status: "Issue fetched", user: consultingInfor });
     })
     .catch(() => {
       console.log(err.message);
-      res
-        .status(500)
-        .send({ status: "Error with get issue", error: err.message });
+      res.status(500).send({ status: "Error with get issue", error: err.message });
     });
 };
-
 
 //Answer update ---> Array Update
 
@@ -126,9 +117,9 @@ const answerUpdate = async (req, res, next) => {
   // };
 
   const update = consulting
-    .findByIdAndUpdate(ID, {$push:{answers:answers}})
+    .findByIdAndUpdate(ID, { $push: { answers: answers } })
     .then(() => {
-      res.status(200).send({ status: "Answer Updated!"});
+      res.status(200).send({ status: "Answer Updated!" });
     })
     .catch((err) => {
       res.satatus(500).send({ status: "Error with updating data" });
@@ -157,5 +148,5 @@ module.exports = {
   consultingDelete,
   consultingGet,
   answerUpdate,
-  getByeventID
+  getByeventID,
 };

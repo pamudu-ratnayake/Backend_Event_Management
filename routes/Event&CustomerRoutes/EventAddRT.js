@@ -10,5 +10,7 @@ router.get("/events", auth, AddEvents.getEvents);
 router.put("/updateevent/:event_id", auth, AddEvents.updateEvent);
 router.delete("/deleteevent/:event_id", auth, AddEvents.deleteEvent);
 router.get("/getOneEvent/:event_id", auth, AddEvents.getOneEvent);
+router.get("/gettopevents/:sp_type", AddEvents.getTopEvents);
+
 
 module.exports = router;
