@@ -129,6 +129,18 @@ exports.getOneEvent = async (req, res) => {
     });
 };
 
+//-------Get Top Events-------
+exports.getTopEvents = (req, res, next) => {
+  console.log(`<=== Get Top Events ====>`);
+  let sp_type = req.params.sp_type;
+  AddEvents.find({checkboxOption: {$all:[sp_type]}, boosting_Purpose: {$exists:true} })
+    .then((events) => {
+      res.json(events);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 //--------boost event-----------
 exports.boostEvent = async (req, res) => {
   let event_id = req.params.event_id;

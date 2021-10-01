@@ -1,5 +1,5 @@
 let Customers = require("../../models/Event&CustomerModels/CustomerDetails");
-let User = require("../../models/auth/user")
+let User = require("../../models/auth/user");
 
 //---post-----------
 exports.postCustomerDetails = (req, res, next) => {
@@ -106,7 +106,7 @@ exports.deleteCustomer = async (req, res) => {
 exports.getOneCustomer = async (req, res) => {
   let user_id = req.params.user_id;
 
-  await Customers.findOne({user_id})
+  await Customers.findOne({ user_id })
     .then((customer) => {
       res.json(customer);
     })
