@@ -43,22 +43,25 @@ const serviceProviderSchema = new mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "Company",
 	},
-  service_type:{
-      type: String,
-    },
-    review_rate: [
-      {
-        rate: {
-          type: Number,
-          // required: true,
-        },
-        review: {
-          type: String,
-          // required: true,
-        },
-      },
-    ],
-  
+	service_type: {
+		type: String,
+	},
+	prof_img: {
+		type: String,
+		required: false,
+	},
+	review_rate: [
+		{
+			rate: {
+				type: Number,
+				// required: true,
+			},
+			review: {
+				type: String,
+				// required: true,
+			},
+		},
+	],
 });
 
 const ServiceProvider = mongoose.model(
