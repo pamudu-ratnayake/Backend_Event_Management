@@ -9,7 +9,7 @@ const sponsorPost = (req, res, next) => {
   const SponsorPhoneNo = Number(req.body.SponsorPhoneNo);
   const sponsorEmail = req.body.sponsorEmail;
   const sponsorAddress = req.body.sponsorAddress;
-  const sponsorLogo = req.file.originalname;
+  const sponsorLogo = "http://localhost:8080/public/uploads/" + req.file.originalname;
 
   const newSponsor = new sponsor({
     regNo,

@@ -104,10 +104,31 @@ const consultingGet = (req, res, next) => {
     });
 };
 
+const answerUpdate = async (req, res, next) => {
+  console.log("update answer");
+  let ID = req.params.id;
+  const answers = req.body.answers;
+
+  // const updateConsulting = {
+  //   answers,
+  // };
+
+  const update = consulting
+    .findByIdAndUpdate(ID, {$push:{answers:answers}})
+    .then(() => {
+      res.status(200).send({ status: "Answer Updated!"});
+    })
+    .catch((err) => {
+      res.satatus(500).send({ status: "Error with updating data" });
+      console.log(err);
+    });
+};
+
 module.exports = {
   consultingPost,
   consultingsGet,
   consultingUpdate,
   consultingDelete,
   consultingGet,
+  answerUpdate
 };

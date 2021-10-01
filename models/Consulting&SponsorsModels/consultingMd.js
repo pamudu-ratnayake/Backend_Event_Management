@@ -10,7 +10,7 @@ const ConsultingSchema = new mongoose.Schema({
     require: true,
   },
   answers: {
-    type: [],
+    type: Array,
     // required: true,
   },
 });
