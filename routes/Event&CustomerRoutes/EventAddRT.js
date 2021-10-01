@@ -13,4 +13,7 @@ router.get("/getOneEvent/:event_id", auth, AddEvents.getOneEvent);
 router.get("/gettopevents/:sp_type", AddEvents.getTopEvents);
 
 
+router.put("/boostevent/:event_id", AddEvents.boostEvent);
+
 module.exports = router;
+
