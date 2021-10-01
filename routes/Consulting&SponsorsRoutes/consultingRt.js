@@ -1,16 +1,18 @@
 const router = require("express").Router();
 const consultingController = require("../../controllers/Consulting&SponsorsControllers/consultingController");
 
-router.post("/addIssue", consultingController.consultingPost);
+const auth = require("../../middleware/auth");
 
-router.get("/getIssues", consultingController.consultingsGet);
+router.post("/addIssue", auth, consultingController.consultingPost);
 
-router.put("/updateIssue/:id", consultingController.consultingUpdate);
+router.get("/getIssues", auth, consultingController.consultingsGet);
 
-router.delete("/deleteIssue/:id", consultingController.consultingDelete);
+router.put("/updateIssue/:id", auth, consultingController.consultingUpdate);
 
-router.get("/getIssue/:id", consultingController.consultingGet);
+router.delete("/deleteIssue/:id", auth, consultingController.consultingDelete);
 
-router.post("/addAnswer/:id", consultingController.answerUpdate);
+router.get("/getIssue/:id", auth, consultingController.consultingGet);
+
+router.post("/addAnswer/:id", auth, consultingController.answerUpdate);
 
 module.exports = router;
