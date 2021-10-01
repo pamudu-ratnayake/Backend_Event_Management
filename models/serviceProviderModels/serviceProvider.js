@@ -5,6 +5,10 @@ const serviceProviderSchema = new mongoose.Schema({
 		type: String,
 		// required: true,
 	},
+	user_id: {
+		type: String,
+		// required: true,
+	},
 	nic_no: {
 		type: String,
 		// required: true,
@@ -27,6 +31,7 @@ const serviceProviderSchema = new mongoose.Schema({
 	mobile: {
 		type: Number,
 		// required: true,
+		default: 0,
 	},
 	telephone: {
 		type: String,
@@ -34,14 +39,30 @@ const serviceProviderSchema = new mongoose.Schema({
 	address: {
 		type: String,
 	},
-	password: {
-		type: String,
-		// required: true,
+	company_id: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "Company",
 	},
+  service_type:{
+      type: String,
+    },
+    review_rate: [
+      {
+        rate: {
+          type: Number,
+          // required: true,
+        },
+        review: {
+          type: Number,
+          // required: true,
+        },
+      },
+    ],
+  
 });
 
 const ServiceProvider = mongoose.model(
-	"serviceProvider",
+	"ServiceProvider",
 	serviceProviderSchema
 );
 

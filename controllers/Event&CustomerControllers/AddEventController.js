@@ -1,6 +1,6 @@
 let AddEvents = require("../../models/Event&CustomerModels/EventAdd");
 
-//-----POST--------
+//-----POST-----------
 exports.postAddEvent = (req, res, next) => {
   const event_name = req.body.event_name;
   const org_name = req.body.org_name;
@@ -56,6 +56,17 @@ exports.postAddEvent = (req, res, next) => {
 exports.getAllEvents = (req, res, next) => {
   let user_id = req.userId;
   AddEvents.find({ user_id })
+    .then((events) => {
+      res.json(events);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+//------GET Events------------
+exports.getEvents = (req, res, next) => {
+  AddEvents.find()
     .then((events) => {
       res.json(events);
     })
