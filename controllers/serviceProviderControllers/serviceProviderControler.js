@@ -13,6 +13,8 @@ exports.createServiceProvider = (req, res, next) => {
 	const mobile = Number(req.body.mobile);
 	const telephone = Number(req.body.telephone);
 	const address = req.body.address;
+	const prof_img =
+		"http://localhost:8080/public/uploads/" + req.file.originalname;
 	const company_id = req.body.company_id;
 
 	const newServiceProvider = new ServiceProviderModel({
@@ -26,6 +28,7 @@ exports.createServiceProvider = (req, res, next) => {
 		mobile,
 		telephone,
 		address,
+		prof_img,
 		company_id,
 	});
 
@@ -65,8 +68,12 @@ exports.updateServiceProvider = async (req, res) => {
 		mobile,
 		telephone,
 		address,
+
 		company_id,
 	} = req.body;
+
+	const prof_img =
+		"http://localhost:8080/public/uploads/" + req.file.originalname;
 
 	const serviceProviderUpdate = {
 		id,
@@ -80,6 +87,7 @@ exports.updateServiceProvider = async (req, res) => {
 		mobile,
 		telephone,
 		address,
+		prof_img,
 		company_id,
 	};
 
