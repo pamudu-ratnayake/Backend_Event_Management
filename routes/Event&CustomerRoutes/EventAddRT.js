@@ -11,4 +11,7 @@ router.put("/updateevent/:event_id", AddEvents.updateEvent);
 router.delete("/deleteevent/:event_id", AddEvents.deleteEvent);
 router.get("/getOneEvent/:event_id", AddEvents.getOneEvent);
 
+router.put("/boostevent/:event_id", AddEvents.boostEvent);
+
 module.exports = router;
+
