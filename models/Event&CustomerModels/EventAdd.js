@@ -59,7 +59,7 @@ const eventAddSchema = new Schema({
     type: Array,
     required: true,
   },
-  boosting_event: {
+  boosting_duration: {
     type: String,
     required: false,
   },
