@@ -51,24 +51,24 @@ const consultingsGet = (req, res, next) => {
 //     });
 // };
 
-const consultingUpdate = (req, res, next) => {
-  let ID = req.params.id;
-  const {  answers } = req.body;
+// const consultingUpdate = (req, res, next) => {
+//   let ID = req.params.id;
+//   const {  answers } = req.body;
 
-  const updateConsulting = {
-    answers,
-  };
+//   const updateConsulting = {
+//     answers,
+//   };
 
-  const update = consulting
-    .findByIdAndUpdate(ID, updateConsulting)
-    .then(() => {
-      res.status(200).send({ status: "User Updated", user: update });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.satatus(500).send({ status: "Error with updating data" });
-    });
-};
+//   const update = consulting
+//     .findByIdAndUpdate(ID, updateConsulting)
+//     .then(() => {
+//       res.status(200).send({ status: "User Updated", user: update });
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.satatus(500).send({ status: "Error with updating data" });
+//     });
+// };
 
 const consultingDelete = (req, res, next) => {
   let ID = req.params.id;
@@ -104,6 +104,7 @@ const consultingGet = (req, res, next) => {
     });
 };
 
+
 const answerUpdate = async (req, res, next) => {
   console.log("update answer");
   let ID = req.params.id;
@@ -124,11 +125,25 @@ const answerUpdate = async (req, res, next) => {
     });
 };
 
+
+const getByeventID = (req, res, next) => {
+  let event_id = req.eventObj._id;
+
+  AddEvents.find({ event_id })
+    .then((events) => {
+      res.json(events);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 module.exports = {
   consultingPost,
   consultingsGet,
-  consultingUpdate,
+  // consultingUpdate,
   consultingDelete,
   consultingGet,
-  answerUpdate
+  answerUpdate,
+  getByeventID
 };
