@@ -1,5 +1,7 @@
 const consulting = require("../../models/Consulting&SponsorsModels/consultingMd");
 
+//Add issue
+
 const consultingPost = (req, res, next) => {
   const issue = req.body.issue;
   const eventObj = req.body.eventObj;
@@ -20,6 +22,8 @@ const consultingPost = (req, res, next) => {
       console.log(err);
     });
 };
+
+//Get All issues
 
 const consultingsGet = (req, res, next) => {
   consulting
@@ -70,6 +74,9 @@ const consultingsGet = (req, res, next) => {
 //     });
 // };
 
+
+//Delete issue
+
 const consultingDelete = (req, res, next) => {
   let ID = req.params.id;
   consulting
@@ -84,6 +91,8 @@ const consultingDelete = (req, res, next) => {
         .send({ status: "Error with delete issue", erroe: err.message });
     });
 };
+
+//Get issue by ID
 
 const consultingGet = (req, res, next) => {
   let ID = req.params.id;
@@ -105,6 +114,8 @@ const consultingGet = (req, res, next) => {
 };
 
 
+//Answer update ---> Array Update
+
 const answerUpdate = async (req, res, next) => {
   console.log("update answer");
   let ID = req.params.id;
@@ -125,6 +136,7 @@ const answerUpdate = async (req, res, next) => {
     });
 };
 
+//Get Issue By ID
 
 const getByeventID = (req, res, next) => {
   let event_id = req.eventObj._id;
