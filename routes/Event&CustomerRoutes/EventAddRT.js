@@ -4,11 +4,11 @@ let AddEvents = require("../../controllers/Event&CustomerControllers/AddEventCon
 const auth = require("../../middleware/auth");
 
 //routes
-router.post("/addevent", AddEvents.postAddEvent);
+router.post("/addevent", auth, AddEvents.postAddEvent);
 router.get("/getevents", auth, AddEvents.getAllEvents);
-router.get("/events", AddEvents.getEvents);
-router.put("/updateevent/:event_id", AddEvents.updateEvent);
-router.delete("/deleteevent/:event_id", AddEvents.deleteEvent);
-router.get("/getOneEvent/:event_id", AddEvents.getOneEvent);
+router.get("/events", auth, AddEvents.getEvents);
+router.put("/updateevent/:event_id", auth, AddEvents.updateEvent);
+router.delete("/deleteevent/:event_id", auth, AddEvents.deleteEvent);
+router.get("/getOneEvent/:event_id", auth, AddEvents.getOneEvent);
 
 module.exports = router;
