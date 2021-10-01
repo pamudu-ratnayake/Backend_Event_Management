@@ -57,9 +57,21 @@ const addPayment = (req, res, next) => {
   };
   
 
+  const viewUserPayment = (req, res, next) => {
+    let user_id = req.userId;
+    Payment.find({ user_id })
+      .then((Payment) => {
+        res.json(Payment);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   
   module.exports = {
       addPayment,
       viewPayment,
+      viewUserPayment,
       viewonePayment
   };

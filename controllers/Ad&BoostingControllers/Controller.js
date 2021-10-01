@@ -13,7 +13,7 @@ const addAdvertisement = (req, res, next) => {
   const advertisement_Duration = req.body.advertisement_Duration;
   const advertisement_title = req.body.advertisement_title;
   const advertisement_Des = req.body.advertisement_Des;
-  const advertisement_Pic = req.file.originalname;
+  const advertisement_Pic = "http://localhost:8080/public/uploads/" +  req.file.originalname;
   const boosting_Pack = req.body.boosting_Pack;
   const total = req.body.total;
   // const PType = req.body.PType;
@@ -59,6 +59,7 @@ const updateAdvertisement = async (req, res, next) => {
   const { service_Provider_Name, email_SP, contact_Number_SP, service_Type, advertisement_Duration,advertisement_title,advertisement_Des,advertisement_Pic} =
     req.body;
 
+    
   const updateAdd = {
     service_Provider_Name,
     // SPID,
