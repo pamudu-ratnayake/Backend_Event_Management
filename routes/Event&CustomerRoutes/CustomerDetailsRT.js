@@ -16,12 +16,11 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-
 //routes
 router.post("/addcustomer", auth, upload.single("file"), Customers.postCustomerDetails);
 router.get("/get-customers", auth, Customers.getCustomers);
-router.put("/update-customer/:cus_id",auth, Customers.updateCustomer);
-router.delete("/delet-customer/:cus_id",auth, Customers.deleteCustomer);
-router.get("/getOneCustomer/:user_id",auth, Customers.getOneCustomer);
+router.put("/update-customer/:cus_id", auth, upload.single("file"), Customers.updateCustomer);
+router.delete("/delet-customer/:cus_id", auth, Customers.deleteCustomer);
+router.get("/getOneCustomer/:user_id", auth, Customers.getOneCustomer);
 
 module.exports = router;

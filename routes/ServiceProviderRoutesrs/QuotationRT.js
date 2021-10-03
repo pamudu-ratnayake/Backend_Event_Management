@@ -1,13 +1,15 @@
 const router = require("express").Router();
 let QuotationController = require("../../controllers/serviceProviderControllers/QuotationController");
 
+const auth = require("../../middleware/auth");
+
 // Create Quotation
 router.post("/create", QuotationController.createQuotation);
 // Get all Quotation
 router.get("/get-quotations/:event_id", QuotationController.getAllQuotation);
 //Get accpeted quotation
 router.get(
-	"/accepted-quotations/:event_id",
+	"/accepted-quotations/:event_id", auth,
 	QuotationController.getAcceptedQuotation
 );
 // Delete Comapny

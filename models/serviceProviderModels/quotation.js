@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 
 const quotationSchema = new mongoose.Schema({
 	event_id: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: "Events",
+		type: String,
+		// ref: "Events",
 	},
 	provider_id: {
 		type: mongoose.Schema.Types.ObjectId,

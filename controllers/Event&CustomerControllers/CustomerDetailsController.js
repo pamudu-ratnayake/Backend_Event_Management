@@ -31,6 +31,7 @@ exports.postCustomerDetails = (req, res, next) => {
 
   newCustomer
     .save()
+    .findBy
     .then(() => {
       res.json("Customer Added");
     })
@@ -65,6 +66,7 @@ exports.getUser = (req, res, next) => {
 exports.updateCustomer = async (req, res) => {
   let cus_id = req.params.cus_id;
   const { cus_userName, cus_FName, cus_LName, cus_nic, cus_gender, cus_address, cus_contact_no, cus_email, cus_description } = req.body;
+  const prof_img = "http://localhost:8080/public/uploads/" + req.file.originalname;
 
   const customerUpdate = {
     cus_userName,
@@ -76,6 +78,7 @@ exports.updateCustomer = async (req, res) => {
     cus_contact_no,
     cus_email,
     cus_description,
+    prof_img,
   };
 
   const update = await Customers.findByIdAndUpdate(cus_id, customerUpdate)
