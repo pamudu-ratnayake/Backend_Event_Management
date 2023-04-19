@@ -1,9 +1,13 @@
 const express = require("express");
+const admin = require("firebase-admin");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
+const https = require("https");
+const fs = require("fs");
 const app = express();
+const Doctor = require("./models/doctorModel/doctor");
 require("dotenv").config();
 
 const PORT = process.env.PORT || 8080;
@@ -11,7 +15,26 @@ const PORT = process.env.PORT || 8080;
 app.use(cors());
 
 app.use(bodyParser.json());
-app.use("/public/uploads", express.static(path.join(__dirname, "public/uploads")));
+app.use(
+  "/public/uploads",
+  express.static(path.join(__dirname, "public/uploads"))
+);
+
+const options = {
+  key: fs.readFileSync("cerificates/key.pem"),
+  cert: fs.readFileSync("cerificates/cert.pem"),
+};
+
+const server = https.createServer(options, app);
+
+const io = require("socket.io")(server);
+
+// Initialize Firebase Admin SDK
+const serviceAccount = require("./config/serviceAccount.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+});
 
 //DB URL
 const URL = process.env.MONGODB_URL;
@@ -26,46 +49,21 @@ mongoose.connect(URL, {
 const connection = mongoose.connection;
 connection.once("open", () => {
   console.log("        <=== Database connected ! ====>");
-  console.log(`<=== Running on URL: http://localhost:${PORT} ====>`);
+  console.log(`<=== Running on URL: https://localhost:${PORT} ====>`);
 });
 
-const AdvertisementRouter = require("./routes/Ad&BoostingRouters/Advertisements.js");
-
-const PaymentRouter = require("./routes/PaymentHandling/PaymentRT.js")
-
-app.use("/advertisement", AdvertisementRouter);
-
-app.use("/payment",PaymentRouter);
-
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`<=== Server is up and running on port ${PORT} ====>`);
 });
 
-//events
-const eventAddRouter = require("./routes/Event&CustomerRoutes/EventAddRT.js");
-app.use("/eventAdd", eventAddRouter);
+// Patient Routes
+const patientRouter = require("./routes/patient/PatientRout.js");
+app.use("/patient", patientRouter);
 
-//customer
-const customerDetailsRouter = require("./routes/Event&CustomerRoutes/CustomerDetailsRT.js");
-app.use("/customerdetails", customerDetailsRouter);
-// Service Provider Routes
-const serviceProviderRouter = require("./routes/ServiceProviderRoutesrs/ServiceProviderRT.js");
-app.use("/serviceProvider", serviceProviderRouter);
+// Doctor Routes
+const doctorRouter = require("./routes/doctor/DoctorRoute");
+app.use("/doctor", doctorRouter);
 
-const companyRouter = require("./routes/ServiceProviderRoutesrs/CompanyRT.js");
-app.use("/company", companyRouter);
-
-const sponsorRouter = require("./routes/Consulting&SponsorsRoutes/sponsors.js");
-app.use("/sponsor", sponsorRouter);
-
-const RequestedSponsorRouter = require("./routes/Consulting&SponsorsRoutes/requested_sponsorRt");
-app.use("/requestedSponsor", RequestedSponsorRouter);
-
-const consultingRouter = require("./routes/Consulting&SponsorsRoutes/consultingRt.js");
-app.use("/consulting", consultingRouter);
-
-const authRoutes = require("./routes/auth/userRT.js");
-app.use("/auth-user", authRoutes);
-// Quotation Routes
-const quotationRouter = require("./routes/ServiceProviderRoutesrs/QuotationRT.js");
-app.use("/quotation", quotationRouter);
+// Email Routes
+const emailRouter = require("./routes/emailRouter/EmailRoute");
+app.use("/email", emailRouter);
